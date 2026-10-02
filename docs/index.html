@@ -1,7 +1,8 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Curto e Silva | Reformas e manutenções em Belo Horizonte</title>
-<meta name="description" content="Reformas e manutenções em Belo Horizonte e região: telhados, infiltrações, pisos, pintura e hidráulica. Equipe própria e orçamento sem custo. Chame no WhatsApp (31) 99984-6776.">
-<meta property="og:title" content="Curto e Silva | Reformas e manutenções em BH"><meta property="og:description" content="Equipe própria, orçamento por escrito e obra entregue limpa."><meta property="og:type" content="website"><meta property="og:image" content="img/equipe.jpg"><meta name="theme-color" content="#1C1917">
+<title>Curto e Silva | Reformas e manutenções em Belo Horizonte, Contagem e Nova Lima</title>
+<meta name="description" content="Reformas e manutenções em Belo Horizonte, Contagem, Nova Lima e região: telhados, infiltrações, pisos, pintura e hidráulica. Equipe própria e orçamento sem custo. WhatsApp (31) 99984-6776.">
+<meta property="og:title" content="Curto e Silva | Reformas e manutenções"><meta property="og:description" content="Equipe própria, orçamento por escrito e obra entregue limpa."><meta property="og:type" content="website"><meta property="og:image" content="img/equipe.jpg"><meta name="theme-color" content="#1C1917">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,7 +15,7 @@
   color-scheme:light;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;background:var(--ink)}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
@@ -65,7 +66,7 @@ p{margin:0}
 @media(max-width:820px){.hero .wrap{grid-template-columns:1fr;gap:34px;padding-block:40px 48px}.hero figure{justify-self:start;max-width:340px}}
 
 /* sections */
-section{padding-block:76px}
+section{padding-block:76px;scroll-margin-top:72px}
 .head{display:grid;gap:14px;max-width:46rem;margin-bottom:40px}
 .head p{color:var(--muted);font-size:1.1rem}
 .on-ink{background:var(--ink);color:var(--white)}
@@ -125,12 +126,17 @@ section{padding-block:76px}
 .contact .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start}
 .contact h2{font-size:clamp(2.8rem,7vw,5rem)}
 .contact .lead{color:var(--on-ink-muted);font-size:1.15rem;margin-top:18px;max-width:30em}
-.card{background:var(--ink-soft);border:1px solid #3A3531;border-radius:8px;padding:28px;display:grid;gap:18px}
-.card dl{margin:0;display:grid;gap:16px}
-.card dt{font-family:var(--display);font-weight:700;letter-spacing:.12em;font-size:.95rem;color:var(--orange);text-transform:uppercase}
-.card dd{margin:0;font-size:1.25rem;font-weight:600}
-.card dd a{text-decoration:none;border-bottom:2px solid var(--orange)}
-.card .btn{width:100%}
+.card{background:var(--ink-soft);border:1px solid #3A3531;border-radius:8px;padding:28px;display:grid;gap:10px}
+.card label{font-family:var(--display);font-weight:700;letter-spacing:.1em;font-size:.95rem;color:var(--orange);text-transform:uppercase;margin-top:6px}
+.card input,.card select,.card textarea{width:100%;font:inherit;font-size:1rem;color:var(--white);background:#1C1917;border:1px solid #4A443F;border-radius:6px;padding:.75rem .85rem}
+.card input::placeholder,.card textarea::placeholder{color:#8E877F}
+.card input:focus,.card select:focus,.card textarea:focus{outline:3px solid var(--orange);outline-offset:1px;border-color:var(--orange)}
+.card textarea{resize:vertical;min-height:84px}
+.card .btn{margin-top:12px}
+.info{margin:34px 0 0;display:grid;gap:16px}
+.info dt{font-family:var(--display);font-weight:700;letter-spacing:.12em;font-size:.95rem;color:var(--orange);text-transform:uppercase}
+.info dd{margin:2px 0 0;font-size:1.15rem;font-weight:600;overflow-wrap:anywhere}
+.info dd a{text-decoration:none;border-bottom:2px solid var(--orange)}
 @media(max-width:820px){.contact .wrap{grid-template-columns:1fr;gap:32px}}
 footer{background:#120F0E;color:var(--on-ink-muted);padding-block:28px;font-size:.92rem}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px}
@@ -141,7 +147,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Curto e Silva","description":"Reformas e manutenções residenciais em Belo Horizonte e região, com equipe própria e orçamento sem custo.","telephone":"+55 31 99984-6776","areaServed":{"@type":"City","name":"Belo Horizonte"},"sameAs":["https://www.instagram.com/curtoesilva/"],"image":"img/equipe.jpg"}
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Curto e Silva","description":"Reformas e manutenções residenciais em Belo Horizonte, Contagem, Nova Lima e região, com equipe própria e orçamento sem custo.","telephone":"+55 31 99984-6776","areaServed":[{"@type":"City","name":"Belo Horizonte"},{"@type":"City","name":"Contagem"},{"@type":"City","name":"Nova Lima"}],"email":"mariasilvacurto@gmail.com","sameAs":["https://www.instagram.com/curtoesilva/"],"image":"img/equipe.jpg"}
 </script>
 
 </head><body><header class="top">
@@ -161,7 +167,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
   <div class="hero">
     <div class="wrap">
       <div>
-        <p class="eyebrow">Reformas e manutenções · Belo Horizonte e região</p>
+        <p class="eyebrow">Reformas e manutenções · BH, Contagem e Nova Lima</p>
         <h1>Reforma sem <em>dor de cabeça.</em></h1>
         <p class="lead">Equipe própria, orçamento por escrito e obra entregue limpa. Do reparo pequeno à reforma completa.</p>
         <div class="cta">
@@ -233,7 +239,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
       <div class="head">
         <p class="eyebrow">Obras reais</p>
         <h2>Antes e depois</h2>
-        <p>Fotos de obras da nossa equipe em Belo Horizonte.</p>
+        <p>Fotos de obras da nossa equipe.</p>
       </div>
 
       <div class="case">
@@ -274,7 +280,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
       </div>
       <div class="faq">
         <details><summary>O orçamento tem custo?</summary><p>Não. O orçamento é sem custo. Você descreve o que precisa pelo WhatsApp e a gente combina a visita para avaliar.</p></details>
-        <details><summary>Quais regiões vocês atendem?</summary><p>Belo Horizonte e região. Mande o seu bairro no WhatsApp que confirmamos se atendemos.</p></details>
+        <details><summary>Quais regiões vocês atendem?</summary><p>Atendemos Belo Horizonte, Contagem, Nova Lima e região. Mande o seu bairro no WhatsApp que confirmamos.</p></details>
         <details><summary>Fazem serviço pequeno?</summary><p>Fazemos. Atendemos desde um reparo pequeno até uma reforma completa.</p></details>
         <details><summary>Como funciona o orçamento?</summary><p>Depois da visita, enviamos o orçamento por escrito, com os valores separados por etapa.</p></details>
         <details><summary>A obra é feita por quem?</summary><p>Pela nossa equipe própria, com acompanhamento do começo ao fim e limpeza na entrega.</p></details>
@@ -285,24 +291,52 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
   <section id="contato" class="on-ink contact">
     <div class="wrap">
       <div>
-        <p class="eyebrow">Contato</p>
+        <p class="eyebrow">Orçamento sem custo</p>
         <h2>Conte o que você precisa</h2>
-        <p class="lead">Mande uma foto e uma descrição do problema. A gente responde e combina a visita.</p>
-      </div>
-      <div class="card">
-        <dl>
+        <p class="lead">Preencha em 1 minuto. A mensagem abre pronta no WhatsApp e a gente responde para combinar a visita.</p>
+        <dl class="info">
           <div><dt>WhatsApp</dt><dd>(31) 99984-6776</dd></div>
+          <div><dt>E-mail</dt><dd><a href="mailto:mariasilvacurto@gmail.com">mariasilvacurto@gmail.com</a></dd></div>
           <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/curtoesilva/" target="_blank" rel="noopener">@curtoesilva</a></dd></div>
-          <div><dt>Atendimento</dt><dd>Belo Horizonte e região</dd></div>
+          <div><dt>Atendimento</dt><dd>Belo Horizonte, Contagem, Nova Lima e região</dd></div>
         </dl>
-        <a class="btn btn-primary" href="https://wa.me/5531999846776?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20sem%20custo." target="_blank" rel="noopener">Chamar no WhatsApp</a>
       </div>
+      <form class="card" id="lead" onsubmit="return false">
+        <label for="f-nome">Seu nome</label>
+        <input id="f-nome" type="text" autocomplete="name" placeholder="Como podemos te chamar?">
+        <label for="f-cidade">Onde fica o serviço?</label>
+        <select id="f-cidade">
+          <option>Belo Horizonte</option><option>Contagem</option><option>Nova Lima</option><option>Outra cidade da região</option>
+        </select>
+        <label for="f-bairro">Bairro</label>
+        <input id="f-bairro" type="text" placeholder="Ex.: Jaraguá, Buritis, Eldorado">
+        <label for="f-servico">O que você precisa?</label>
+        <select id="f-servico">
+          <option>Telhado ou calha</option><option>Infiltração ou mancha</option><option>Piso</option><option>Pintura</option><option>Hidráulica</option><option>Reforma de banheiro ou cozinha</option><option>Calçada ou área externa</option><option>Outro serviço</option>
+        </select>
+        <label for="f-obs">Conte mais (opcional)</label>
+        <textarea id="f-obs" rows="3" placeholder="Descreva o problema. Depois você pode mandar fotos no WhatsApp."></textarea>
+        <a class="btn btn-primary" id="f-send" href="https://wa.me/5531999846776" target="_blank" rel="noopener">Enviar pelo WhatsApp</a>
+      </form>
     </div>
   </section>
 </main>
 
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var fone='5531999846776';
+  function montar(){
+    var nome=$('f-nome').value.trim(), cid=$('f-cidade').value, bai=$('f-bairro').value.trim(), srv=$('f-servico').value, obs=$('f-obs').value.trim();
+    var t='Olá! '+(nome?'Meu nome é '+nome+'. ':'')+'Preciso de orçamento sem custo para: '+srv+'. Local: '+(bai?bai+', ':'')+cid+'.'+(obs?' Detalhes: '+obs:'');
+    $('f-send').href='https://wa.me/'+fone+'?text='+encodeURIComponent(t);
+  }
+  ['f-nome','f-cidade','f-bairro','f-servico','f-obs'].forEach(function(id){var e=$(id);if(e){e.addEventListener('input',montar);e.addEventListener('change',montar)}});
+  montar();
+})();
+</script>
 <footer>
-  <div class="wrap"><span>Curto e Silva · Reformas e manutenções</span><span>Belo Horizonte, MG</span></div>
+  <div class="wrap"><span>Curto e Silva · Reformas e manutenções</span><span>Belo Horizonte · Contagem · Nova Lima</span></div>
 </footer>
 
 <a class="float" href="https://wa.me/5531999846776?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20sem%20custo." target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">WhatsApp</a>
