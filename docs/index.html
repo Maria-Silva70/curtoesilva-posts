@@ -1,164 +1,257 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Curto e Silva | Reformas e manutenções em Belo Horizonte, Contagem e Nova Lima</title>
-<meta name="description" content="Reformas e manutenções em Belo Horizonte, Contagem, Nova Lima e região: telhados, infiltrações, pisos, pintura e hidráulica. Equipe própria e orçamento sem custo. WhatsApp (31) 99984-6776.">
-<meta property="og:title" content="Curto e Silva | Reformas e manutenções"><meta property="og:description" content="Equipe própria, orçamento por escrito e obra entregue limpa."><meta property="og:type" content="website"><meta property="og:image" content="img/equipe.jpg"><meta name="theme-color" content="#1C1917">
+<meta name="description" content="Construção, reformas e manutenção ágil em Belo Horizonte, Contagem, Nova Lima e região: telhados, infiltrações, pisos, pintura e hidráulica. Equipe própria e orçamento sem custo. WhatsApp (31) 99984-6776.">
+<meta property="og:title" content="Curto e Silva | A nova geração que honra o velho compromisso"><meta property="og:description" content="Construção, reforma e manutenção ágil. Equipe própria e orçamento sem custo."><meta property="og:type" content="website"><meta property="og:image" content="img/equipe.jpg"><meta name="theme-color" content="#07080a">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* Direção: oficina limpa. Preto de obra, laranja da marca, fotos reais em primeiro plano. Títulos condensados, texto simples. */
+/* Direção: futurista. Fundo quase preto, grade de planta baixa, laranja da marca como luz, vidro fosco nos cartões, títulos enormes. */
 :root{
-  --orange:#E65D15; --orange-dark:#C94A0A; --ink:#1C1917; --paper:#F4F2EF; --white:#FFFFFF;
-  --muted:#5E5953; --line:#DDD8D2; --ink-soft:#2A2623; --on-ink-muted:#C9C3BC;
-  --display:'Barlow Condensed','Arial Narrow',Arial,sans-serif; --body:'Barlow',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
-  color-scheme:light;
+  --bg:#07080a; --bg2:#0d0f13; --card:rgba(255,255,255,.04); --card-line:rgba(255,255,255,.09);
+  --text:#f4f4f6; --muted:#9a9ca5; --accent:#ff6a1f; --accent2:#ffb36b; --accent-deep:#E65D15;
+  --glow:0 0 40px rgba(255,106,31,.45);
+  --display:'Space Grotesk','Inter',system-ui,sans-serif; --body:'Inter',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;background:var(--ink)}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
-.wrap{width:100%;max-width:1120px;margin-inline:auto;padding-inline:20px}
-h1,h2,h3{font-family:var(--display);font-weight:800;line-height:.98;margin:0;text-transform:uppercase;text-wrap:balance;letter-spacing:.005em}
-h2{font-size:clamp(2.4rem,6vw,3.9rem)}
-h3{font-size:1.7rem;line-height:1.05}
 p{margin:0}
-.eyebrow{font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-dark)}
-.on-ink .eyebrow{color:var(--orange)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;font-family:var(--display);font-weight:800;font-size:1.3rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:.85rem 1.6rem;border-radius:6px;border:2px solid transparent;transition:background .15s,color .15s,border-color .15s}
-.btn-primary{background:var(--orange);color:var(--ink)}
-.btn-primary:hover{background:var(--ink);color:var(--white)}
-.btn-ghost{border-color:var(--ink);color:var(--ink)}
-.btn-ghost:hover{background:var(--ink);color:var(--white)}
-.on-ink .btn-ghost{border-color:var(--white);color:var(--white)}
-.on-ink .btn-ghost:hover{background:var(--white);color:var(--ink)}
-.on-ink .btn-primary:hover{background:var(--white);color:var(--ink)}
-:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+h1,h2,h3{margin:0;font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1;text-wrap:balance}
+.wrap{width:100%;max-width:1240px;margin-inline:auto;padding-inline:22px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.grad{background:linear-gradient(100deg,#fff 10%,var(--accent2) 45%,var(--accent) 75%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mono{font-family:var(--display);font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.mono::before{content:"// ";opacity:.6}
 
-/* header */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--ink);color:var(--white)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-.brand img{width:46px;height:46px}
-.brand b{font-family:var(--display);font-weight:800;font-size:1.5rem;letter-spacing:.04em;text-transform:uppercase;line-height:1}
-.nav{display:flex;align-items:center;gap:26px}
-.nav a{font-weight:500;text-decoration:none;font-size:.98rem;color:var(--on-ink-muted)}
-.nav a:hover{color:var(--white)}
-.top .btn{font-size:1.05rem;padding:.55rem 1.1rem}
-@media(max-width:820px){.nav a.hide-m{display:none}.nav{gap:0}}
-@media(max-width:420px){.brand b{font-size:1.25rem}.top .btn{padding:.5rem .8rem}}
+/* botões */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--display);font-weight:600;font-size:17px;text-decoration:none;color:#0b0b0d;background:linear-gradient(135deg,var(--accent2),var(--accent));padding:15px 26px;border-radius:999px;box-shadow:0 0 0 1px rgba(255,255,255,.15) inset,0 10px 40px -8px rgba(255,106,31,.7);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(255,255,255,.25) inset,0 16px 50px -8px rgba(255,106,31,.9)}
+.btn.ghost{background:rgba(255,255,255,.06);color:var(--text);box-shadow:0 0 0 1px var(--card-line) inset;backdrop-filter:blur(10px)}
+.btn.ghost:hover{background:rgba(255,255,255,.1)}
+.btn.small{font-size:14px;padding:9px 16px}
+.btn .arr{transition:transform .2s}
+.btn:hover .arr{transform:translateX(4px)}
 
-/* hero */
-.hero{background:var(--ink);color:var(--white);overflow:hidden}
-.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding-block:56px 64px}
-.hero h1{font-size:clamp(3.2rem,9vw,6.4rem);margin:14px 0 22px}
-.hero h1 em{font-style:normal;color:var(--orange)}
-.hero p.lead{font-size:1.2rem;color:var(--on-ink-muted);max-width:34em}
-.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.hero .facts{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:30px;padding:0;list-style:none;font-weight:600;font-size:.98rem}
-.hero .facts li{display:flex;align-items:center;gap:8px}
-.hero .facts li::before{content:"";width:10px;height:10px;background:var(--orange);border-radius:2px}
-.hero figure{margin:0;position:relative;justify-self:end;width:100%;max-width:400px}
-.hero figure::before{content:"";position:absolute;inset:18px -18px -18px 18px;background:var(--orange);border-radius:6px}
-.hero figure img{position:relative;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:6px}
-.hero figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 14px 12px;font-size:.88rem;font-weight:500;color:var(--white);background:linear-gradient(transparent,rgba(0,0,0,.72));border-radius:0 0 6px 6px}
-@media(max-width:820px){.hero .wrap{grid-template-columns:1fr;gap:34px;padding-block:40px 48px}.hero figure{justify-self:start;max-width:340px}}
+/* topo */
+.top{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.top.solid{background:rgba(7,8,10,.72);backdrop-filter:saturate(160%) blur(18px);-webkit-backdrop-filter:saturate(160%) blur(18px);border-color:var(--card-line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-.02em}
+.brand img{width:30px;height:30px}
+.nav{display:flex;align-items:center;gap:30px}
+.nav a{text-decoration:none;font-size:14px;color:var(--muted);transition:color .2s}
+.nav a:hover{color:var(--text)}
+.nav a.btn{color:#0b0b0d}
+@media(max-width:820px){.nav a.hide-m{display:none}}
 
-/* sections */
-section{padding-block:76px;scroll-margin-top:72px}
-.head{display:grid;gap:14px;max-width:46rem;margin-bottom:40px}
-.head p{color:var(--muted);font-size:1.1rem}
-.on-ink{background:var(--ink);color:var(--white)}
-.on-ink .head p{color:var(--on-ink-muted)}
+/* abertura */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:120px 0 80px;overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 30%,transparent 80%);animation:grid 24s linear infinite}
+@keyframes grid{to{background-position:56px 56px,56px 56px}}
+.hero::after{content:"";position:absolute;z-index:-1;width:900px;height:900px;left:50%;top:-260px;transform:translateX(-30%);background:radial-gradient(circle,rgba(255,106,31,.32),rgba(255,106,31,.08) 40%,transparent 68%);filter:blur(20px);animation:pulse 8s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.6;transform:translateX(-30%) scale(1.08)}}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(46px,6.6vw,92px);line-height:1.02;margin:22px 0 0}
+.hero h1 span{display:block}
+.hero .lead{font-size:clamp(19px,2vw,22px);color:var(--muted);max-width:32ch;margin-top:28px}
+.hero .lead b{color:var(--text);font-weight:600}
+.ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+.status{display:inline-flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);padding:7px 14px 7px 10px;border-radius:999px;background:var(--card);border:1px solid var(--card-line);backdrop-filter:blur(10px)}
+.status i{width:8px;height:8px;border-radius:50%;background:#30d158;box-shadow:0 0 0 0 rgba(48,209,88,.6);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 10px rgba(48,209,88,0)}100%{box-shadow:0 0 0 0 rgba(48,209,88,0)}}
 
-/* serviços */
-.services{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--ink)}
-.services article{padding:24px 22px 28px 0;border-bottom:1px solid var(--line)}
-.services h3{margin-bottom:8px}
-.services p{color:var(--muted);font-size:.98rem}
-.services article span{display:block;font-family:var(--display);font-weight:700;font-size:.95rem;letter-spacing:.12em;color:var(--orange-dark);margin-bottom:10px;text-transform:uppercase}
-@media(max-width:900px){.services{grid-template-columns:repeat(2,1fr)}.services article{padding-right:18px}}
-@media(max-width:520px){.services{grid-template-columns:1fr}}
+/* planta 3D que se desenha */
+.blueprint{position:relative;aspect-ratio:1;max-width:520px;width:100%;justify-self:end}
+.blueprint svg{width:100%;height:100%;overflow:visible}
+.blueprint .ln{fill:none;stroke:var(--accent);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:var(--len);stroke-dashoffset:var(--len);animation:draw 2.6s cubic-bezier(.6,.1,.2,1) forwards;filter:drop-shadow(0 0 6px rgba(255,106,31,.8))}
+.blueprint .ln.soft{stroke:rgba(255,179,107,.45);stroke-width:1;filter:none}
+.blueprint .face{fill:rgba(255,106,31,.07);opacity:0;animation:fade 1.2s 2s forwards}
+.blueprint .dim{font-family:var(--display);font-size:11px;letter-spacing:.12em;fill:var(--muted);opacity:0;animation:fade 1s 2.4s forwards}
+.blueprint .dot{fill:var(--accent);opacity:0;animation:fade .6s 2.6s forwards,blink 2s 3.2s infinite}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fade{to{opacity:1}}
+@keyframes blink{50%{opacity:.25}}
+.chip{position:absolute;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;padding:9px 14px;border-radius:14px;background:rgba(20,22,27,.7);border:1px solid var(--card-line);backdrop-filter:blur(12px);opacity:0;animation:fade .8s forwards,float 6s ease-in-out infinite}
+.chip b{color:var(--accent);font-family:var(--display)}
+.chip.c1{left:-4%;top:14%;animation-delay:2.8s,2.8s}
+.chip.c2{right:-2%;top:46%;animation-delay:3.1s,3.6s}
+.chip.c3{left:6%;bottom:6%;animation-delay:3.4s,4.4s}
+@keyframes float{50%{transform:translateY(-10px)}}
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr}.blueprint{justify-self:center;max-width:420px;margin-top:10px}.hero{min-height:0}}
+
+/* faixa que corre */
+.marquee{border-block:1px solid var(--card-line);background:var(--bg2);overflow:hidden;padding:22px 0}
+.marquee .track{display:flex;gap:56px;width:max-content;animation:run 38s linear infinite}
+.marquee span{font-family:var(--display);font-weight:600;font-size:clamp(22px,3vw,34px);letter-spacing:-.02em;white-space:nowrap;color:#3a3d45}
+.marquee span:nth-child(odd){color:var(--text)}
+.marquee span::after{content:"✦";margin-left:56px;color:var(--accent);font-size:.6em;vertical-align:middle}
+@keyframes run{to{transform:translateX(-50%)}}
+
+/* números */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--card-line);border:1px solid var(--card-line);border-radius:28px;overflow:hidden;margin-top:-1px}
+.stats div{background:var(--bg);padding:38px 28px}
+.stats b{display:block;font-family:var(--display);font-size:clamp(40px,4.2vw,56px);font-weight:700;letter-spacing:-.04em;line-height:1;white-space:nowrap}
+.stats span{display:block;color:var(--muted);font-size:15px;margin-top:10px}
+@media(max-width:820px){.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.stats div{padding:26px 18px}.stats b{font-size:30px}.stats span{font-size:13px}}
+
+/* seções */
+section{padding:130px 0;scroll-margin-top:64px;position:relative}
+.head{max-width:820px;margin-bottom:64px}
+.head.center{text-align:center;margin-inline:auto}
+.head h2{font-size:clamp(42px,6.4vw,84px);margin-top:18px}
+.head p{font-size:20px;color:var(--muted);margin-top:22px;max-width:46ch}
+.head.center p{margin-inline:auto}
+
+/* serviços: vidro com luz que segue o mouse */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tile{position:relative;border-radius:24px;padding:30px 26px;background:var(--card);border:1px solid var(--card-line);overflow:hidden;min-height:250px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;transition:border-color .3s,transform .3s}
+.tile::before{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(255,106,31,.18),transparent 45%);opacity:0;transition:opacity .3s;pointer-events:none}
+.tile:hover{border-color:rgba(255,106,31,.45);transform:translateY(-4px)}
+.tile:hover::before{opacity:1}
+.tile .ico{position:absolute;top:26px;left:26px;width:48px;height:48px;border-radius:14px;display:grid;place-items:center;color:var(--accent);background:rgba(255,106,31,.1);border:1px solid rgba(255,106,31,.25)}
+.tile .ico svg{width:24px;height:24px}
+.tile .n{position:absolute;top:28px;right:26px;font-family:var(--display);font-size:13px;color:#4a4d55;letter-spacing:.1em}
+.tile h3{font-size:26px;letter-spacing:-.03em}
+.tile p{font-size:15px;color:var(--muted)}
+.tile.big{grid-column:span 2;background:linear-gradient(135deg,rgba(255,106,31,.16),rgba(255,106,31,.02) 60%),var(--card)}
+.tile.big h3{font-size:36px}
+@media(max-width:980px){.tiles{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.tiles{grid-template-columns:1fr}.tile.big{grid-column:auto}.tile{min-height:210px}}
 
 /* checkup */
-.checkup{background:var(--orange);color:var(--ink);padding-block:52px}
-.checkup .wrap{display:grid;grid-template-columns:1.4fr auto;gap:28px;align-items:center}
-.checkup h2{font-size:clamp(2.2rem,5vw,3.4rem)}
-.checkup p{margin-top:12px;font-size:1.1rem;font-weight:500;max-width:36em}
-.checkup .btn{background:var(--ink);color:var(--white)}
-.checkup .btn:hover{background:var(--white);color:var(--ink)}
-@media(max-width:760px){.checkup .wrap{grid-template-columns:1fr}}
+.promo{position:relative;border-radius:36px;overflow:hidden;padding:80px 60px;background:radial-gradient(120% 140% at 100% 0%,rgba(255,106,31,.55),rgba(255,106,31,.08) 45%,transparent 70%),var(--bg2);border:1px solid rgba(255,106,31,.3);display:grid;grid-template-columns:1.3fr auto;gap:40px;align-items:center}
+.promo::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.12) 1px,transparent 1px);background-size:22px 22px;mask-image:linear-gradient(90deg,transparent,#000);-webkit-mask-image:linear-gradient(90deg,transparent,#000);pointer-events:none}
+.promo h2{font-size:clamp(40px,5.6vw,72px);margin-top:16px}
+.promo p{font-size:20px;color:#d6d6db;margin-top:18px;max-width:38ch}
+.promo .btn{position:relative;z-index:1}
+@media(max-width:820px){.promo{grid-template-columns:1fr;padding:48px 26px;border-radius:26px}}
 
-/* processo */
-.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s}
-.steps li{counter-increment:s;padding:26px 24px 8px 0;border-top:2px solid var(--orange)}
-.steps li::before{content:counter(s);display:block;font-family:var(--display);font-weight:800;font-size:3.4rem;line-height:1;color:var(--orange);margin-bottom:10px}
-.steps h3{font-size:1.5rem;margin-bottom:8px;color:var(--white)}
-.steps p{color:var(--on-ink-muted);font-size:1rem}
-@media(max-width:900px){.steps{grid-template-columns:repeat(2,1fr);row-gap:18px}}
-@media(max-width:520px){.steps{grid-template-columns:1fr}}
+/* como trabalhamos: linha de tempo com luz */
+.timeline{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s;position:relative}
+.timeline::before{content:"";position:absolute;left:0;right:0;top:27px;height:2px;background:linear-gradient(90deg,var(--accent),rgba(255,106,31,.1));transform-origin:left;transform:scaleX(var(--prog,0));transition:transform 1.6s cubic-bezier(.6,.1,.2,1)}
+.timeline li{counter-increment:s;position:relative;padding-top:80px}
+.timeline li::before{content:"0" counter(s);position:absolute;top:0;left:0;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:17px;background:var(--bg);border:1px solid rgba(255,106,31,.5);color:var(--accent);box-shadow:var(--glow)}
+.timeline h3{font-size:26px;margin-bottom:10px}
+.timeline p{color:var(--muted);font-size:16px;max-width:26ch}
+@media(max-width:900px){.timeline{grid-template-columns:1fr 1fr;row-gap:40px}.timeline::before{display:none}}
+@media(max-width:520px){.timeline{grid-template-columns:1fr}}
 
 /* obras */
-.case{display:grid;gap:18px;margin-bottom:64px}
-.case:last-child{margin-bottom:0}
-.case h3{font-size:2.1rem}
-.case .meta{color:var(--muted);max-width:44rem}
-.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.pair.three{grid-template-columns:repeat(3,1fr)}
-.shot{margin:0;position:relative;background:var(--ink);border-radius:6px;overflow:hidden}
-.shot img{width:100%;aspect-ratio:4/3;object-fit:cover}
-.pair.tall .shot img{aspect-ratio:3/4}
-.shot b{position:absolute;left:0;top:14px;background:var(--ink);color:var(--white);font-family:var(--display);font-weight:800;letter-spacing:.1em;font-size:1.05rem;padding:.25rem .8rem .25rem .9rem;text-transform:uppercase}
-.shot b.after{background:var(--orange);color:var(--ink)}
-@media(max-width:560px){.pair{gap:8px}.shot b{font-size:.9rem;padding:.2rem .6rem}}
+.case{margin-bottom:96px}
+.case:last-of-type{margin-bottom:56px}
+.case .text{display:flex;justify-content:space-between;align-items:end;gap:20px 40px;flex-wrap:wrap;margin-bottom:26px}
+.case h3{font-size:clamp(28px,3.6vw,44px);max-width:20ch}
+.case .text p{color:var(--muted);max-width:44ch}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pair figure{margin:0;position:relative;border-radius:26px;overflow:hidden;border:1px solid var(--card-line);background:var(--bg2)}
+.pair img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.pair figure:hover img{transform:scale(1.04)}
+.pair.land img{aspect-ratio:4/3}
+.pair figcaption{position:absolute;left:16px;top:16px;font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;border-radius:999px;background:rgba(7,8,10,.6);border:1px solid var(--card-line);backdrop-filter:blur(10px)}
+.pair figcaption.after{background:rgba(255,106,31,.9);color:#0b0b0d;border-color:transparent;box-shadow:var(--glow)}
+@media(max-width:700px){.pair{gap:10px}.pair figure{border-radius:18px}}
+.center{text-align:center}
+.link{color:var(--accent);text-decoration:none;font-family:var(--display);font-weight:600}
+.link:hover{text-decoration:underline}
 
-/* faq */
-.faq{display:grid;gap:0;max-width:50rem;border-top:2px solid var(--ink)}
-.faq details{border-bottom:1px solid var(--line);padding:0}
-.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:20px 0;font-family:var(--display);font-weight:700;font-size:1.5rem;text-transform:uppercase;letter-spacing:.01em}
+/* galeria */
+.gallery-head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:12px 40px;margin:24px 0 22px;padding-top:56px;border-top:1px solid var(--card-line)}
+.gallery-head h3{font-size:clamp(32px,4vw,52px)}
+.gallery-head p{color:var(--muted)}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.filters button{font:inherit;font-family:var(--display);font-weight:600;font-size:14px;color:var(--muted);background:var(--card);border:1px solid var(--card-line);border-radius:999px;padding:9px 16px;cursor:pointer;transition:color .2s,border-color .2s,background .2s}
+.filters button:hover{color:var(--text);border-color:rgba(255,255,255,.25)}
+.filters button.on{color:#0b0b0d;background:linear-gradient(135deg,var(--accent2),var(--accent));border-color:transparent}
+.gallery{columns:4 240px;column-gap:14px;margin-bottom:56px}
+.g-item{position:relative;margin:0 0 14px;break-inside:avoid;border-radius:20px;overflow:hidden;border:1px solid var(--card-line);background:var(--bg2)}
+.g-item[hidden]{display:none}
+.g-open{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in}
+.g-item img{width:100%;height:auto;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.g-item:hover img{transform:scale(1.04)}
+.g-tag{position:absolute;left:12px;top:12px;font-family:var(--display);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:rgba(7,8,10,.65);border:1px solid var(--card-line);backdrop-filter:blur(10px);pointer-events:none}
+.g-tag.after{background:rgba(255,106,31,.92);color:#0b0b0d;border-color:transparent}
+.g-tag.doing{background:rgba(7,8,10,.65);color:var(--accent2);border-color:rgba(255,179,107,.45)}
+.g-item figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 14px 12px;font-size:13px;font-weight:500;background:linear-gradient(transparent,rgba(0,0,0,.78));pointer-events:none}
+.lightbox{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh;color:var(--text)}
+.lightbox::backdrop{background:rgba(5,6,8,.92);backdrop-filter:blur(8px)}
+.lightbox[open]{display:flex;align-items:center;justify-content:center}
+.lightbox figure{margin:0;display:grid;gap:12px;justify-items:center;max-width:min(92vw,1100px)}
+.lightbox img{max-width:100%;max-height:80vh;width:auto;height:auto;border-radius:16px}
+.lightbox figcaption{font-size:15px;color:var(--muted);text-align:center}
+.lb-close,.lb-nav{position:fixed;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;font-size:28px;line-height:1;color:var(--text);background:rgba(255,255,255,.08);border:1px solid var(--card-line);cursor:pointer}
+.lb-close:hover,.lb-nav:hover{border-color:var(--accent);color:var(--accent)}
+.lb-close{top:18px;right:18px}
+.lb-nav.prev{left:18px;top:50%;transform:translateY(-50%)}
+.lb-nav.next{right:18px;top:50%;transform:translateY(-50%)}
+@media(max-width:600px){.gallery{columns:2;column-gap:10px}.g-item{margin-bottom:10px;border-radius:14px}.g-item figcaption{display:none}.lb-nav{top:auto;bottom:22px;transform:none}}
+
+/* dúvidas */
+.faq{max-width:860px;margin:0 auto;display:grid;gap:12px}
+.faq details{border-radius:20px;background:var(--card);border:1px solid var(--card-line);padding:0 26px;transition:border-color .3s}
+.faq details[open]{border-color:rgba(255,106,31,.4)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:24px 0;font-family:var(--display);font-size:21px;font-weight:600;letter-spacing:-.02em}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-size:2rem;line-height:1;color:var(--orange-dark);flex:none}
-.faq details[open] summary::after{content:"–"}
-.faq p{padding:0 0 22px;color:var(--muted);max-width:42rem}
+.faq summary::after{content:"+";flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:20px;color:var(--accent);border:1px solid rgba(255,106,31,.4);transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{padding:0 0 24px;color:var(--muted);max-width:62ch}
 
 /* contato */
-.contact .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start}
-.contact h2{font-size:clamp(2.8rem,7vw,5rem)}
-.contact .lead{color:var(--on-ink-muted);font-size:1.15rem;margin-top:18px;max-width:30em}
-.card{background:var(--ink-soft);border:1px solid #3A3531;border-radius:8px;padding:28px;display:grid;gap:10px}
-.card label{font-family:var(--display);font-weight:700;letter-spacing:.1em;font-size:.95rem;color:var(--orange);text-transform:uppercase;margin-top:6px}
-.card input,.card select,.card textarea{width:100%;font:inherit;font-size:1rem;color:var(--white);background:#1C1917;border:1px solid #4A443F;border-radius:6px;padding:.75rem .85rem}
-.card input::placeholder,.card textarea::placeholder{color:#8E877F}
-.card input:focus,.card select:focus,.card textarea:focus{outline:3px solid var(--orange);outline-offset:1px;border-color:var(--orange)}
-.card textarea{resize:vertical;min-height:84px}
-.card .btn{margin-top:12px}
-.info{margin:34px 0 0;display:grid;gap:16px}
-.info dt{font-family:var(--display);font-weight:700;letter-spacing:.12em;font-size:.95rem;color:var(--orange);text-transform:uppercase}
-.info dd{margin:2px 0 0;font-size:1.15rem;font-weight:600;overflow-wrap:anywhere}
-.info dd a{text-decoration:none;border-bottom:2px solid var(--orange)}
-@media(max-width:820px){.contact .wrap{grid-template-columns:1fr;gap:32px}}
-footer{background:#120F0E;color:var(--on-ink-muted);padding-block:28px;font-size:.92rem}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px}
+.contact .grid{display:grid;grid-template-columns:1fr 1.1fr;gap:16px}
+.panel{border-radius:28px;background:var(--card);border:1px solid var(--card-line);padding:40px;backdrop-filter:blur(12px)}
+.info{margin:0;display:grid;gap:24px}
+.info dt{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.info dd{margin:6px 0 0;font-size:21px;font-weight:600;overflow-wrap:anywhere}
+.info dd a{text-decoration:none}
+.info dd a:hover{color:var(--accent)}
+.form{display:grid;gap:16px}
+.form label{font-size:13px;font-weight:500;color:var(--muted)}
+.form input,.form select,.form textarea{width:100%;font:inherit;font-size:16px;color:var(--text);background:rgba(0,0,0,.35);border:1px solid var(--card-line);border-radius:14px;padding:14px 16px;margin-top:7px;-webkit-appearance:none;appearance:none;transition:border-color .2s,box-shadow .2s}
+.form select{background-image:linear-gradient(45deg,transparent 50%,#9a9ca5 50%),linear-gradient(135deg,#9a9ca5 50%,transparent 50%);background-position:calc(100% - 22px) 52%,calc(100% - 16px) 52%;background-size:6px 6px;background-repeat:no-repeat}
+.form select option{background:#14161b}
+.form input::placeholder,.form textarea::placeholder{color:#5d6069}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(255,106,31,.18)}
+.form textarea{resize:vertical;min-height:96px}
+.form .btn{width:100%;margin-top:6px;padding:17px}
+@media(max-width:860px){.contact .grid{grid-template-columns:1fr}.panel{padding:28px 22px;border-radius:22px}}
 
-/* botão flutuante */
-.float{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;background:var(--orange);color:var(--ink);font-family:var(--display);font-weight:800;font-size:1.15rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:.8rem 1.2rem;border-radius:999px;box-shadow:0 6px 20px rgba(0,0,0,.28)}
-.float:hover{background:var(--ink);color:var(--white)}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+footer{border-top:1px solid var(--card-line);color:var(--muted);font-size:13px;padding:30px 0 44px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px}
+
+/* WhatsApp flutuante */
+.float{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;align-items:center;gap:9px;font-family:var(--display);font-weight:600;font-size:15px;text-decoration:none;color:var(--text);padding:12px 18px;border-radius:999px;background:rgba(20,22,27,.75);border:1px solid var(--card-line);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.float i{width:8px;height:8px;border-radius:50%;background:#30d158;animation:ping 2s infinite}
+.float:hover{border-color:rgba(255,106,31,.5)}
+
+/* aparecer ao rolar */
+.reveal{opacity:0;transform:translateY(32px);filter:blur(6px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1),filter .9s ease}
+.reveal.in{opacity:1;transform:none;filter:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none;filter:none}
+  .blueprint .ln{stroke-dashoffset:0}.blueprint .face,.blueprint .dim,.blueprint .dot,.chip{opacity:1}
+  .timeline{--prog:1}
+}
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Curto e Silva","description":"Reformas e manutenções residenciais em Belo Horizonte, Contagem, Nova Lima e região, com equipe própria e orçamento sem custo.","telephone":"+55 31 99984-6776","areaServed":[{"@type":"City","name":"Belo Horizonte"},{"@type":"City","name":"Contagem"},{"@type":"City","name":"Nova Lima"}],"email":"atendimento@curtoesilva.com.br","legalName":"CURTO E SILVA - REFORMAS E CONSTRUCAO LTDA","taxID":"30.569.236/0001-04","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"08:00","closes":"20:00"}],"sameAs":["https://www.instagram.com/curtoesilva/"],"image":"img/equipe.jpg"}
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Curto e Silva","description":"Construção, reformas e manutenção residencial em Belo Horizonte, Contagem, Nova Lima e região, com equipe própria e orçamento sem custo.","telephone":"+55 31 99984-6776","areaServed":[{"@type":"City","name":"Belo Horizonte"},{"@type":"City","name":"Contagem"},{"@type":"City","name":"Nova Lima"}],"email":"atendimento@curtoesilva.com.br","legalName":"CURTO E SILVA - REFORMAS E CONSTRUCAO LTDA","taxID":"30.569.236/0001-04","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"08:00","closes":"20:00"}],"sameAs":["https://www.instagram.com/curtoesilva/"],"image":"img/equipe.jpg"}
 </script>
-
-</head><body><header class="top">
+</head><body>
+<header class="top" id="top">
   <div class="wrap">
-    <a class="brand" href="#topo" aria-label="Curto e Silva, início"><img src="img/logo.png" width="46" height="46" alt=""><b>Curto e Silva</b></a>
+    <a class="brand" href="#topo" aria-label="Curto e Silva, início"><img src="img/logo.png" width="30" height="30" alt="">Curto e Silva</a>
     <nav class="nav" aria-label="Principal">
       <a class="hide-m" href="#servicos">Serviços</a>
       <a class="hide-m" href="#como">Como trabalhamos</a>
       <a class="hide-m" href="#obras">Obras</a>
       <a class="hide-m" href="#duvidas">Dúvidas</a>
-      <a class="btn btn-primary" href="https://wa.me/5531999846776?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20sem%20custo." target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn small" href="https://wa.me/5531999846776?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20sem%20custo." target="_blank" rel="noopener">Orçamento</a>
     </nav>
   </div>
 </header>
@@ -167,118 +260,192 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
   <div class="hero">
     <div class="wrap">
       <div>
-        <p class="eyebrow">Reformas e manutenções · BH, Contagem e Nova Lima</p>
-        <h1>Reforma sem <em>dor de cabeça.</em></h1>
-        <p class="lead">Equipe própria, orçamento por escrito e obra entregue limpa. Do reparo pequeno à reforma completa.</p>
-        <div class="cta">
-          <a class="btn btn-primary" href="https://wa.me/5531999846776?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20sem%20custo." target="_blank" rel="noopener">Pedir orçamento sem custo</a>
-          <a class="btn btn-ghost" href="#obras">Ver obras</a>
+        <span class="status reveal"><i></i>Todos os dias, 8h às 20h · BH, Contagem e Nova Lima</span>
+        <h1 class="reveal"><span>A nova geração</span><span class="grad">que honra o velho compromisso.</span></h1>
+        <p class="lead reveal">Da construção à <b>manutenção ágil</b>. Equipe própria, orçamento por escrito e obra entregue limpa.</p>
+        <div class="ctas reveal">
+          <a class="btn" href="https://wa.me/5531999846776?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20sem%20custo." target="_blank" rel="noopener">Pedir orçamento sem custo <span class="arr">→</span></a>
+          <a class="btn ghost" href="#obras">Ver obras</a>
         </div>
-        <ul class="facts">
-          <li>Equipe própria</li>
-          <li>Orçamento por etapa</li>
-          <li>Entrega com limpeza</li>
-        </ul>
       </div>
-      <figure>
-        <img src="img/equipe.jpg" width="600" height="1270" alt="Profissional da Curto e Silva de uniforme trabalhando no piso de um quarto em reforma">
-        <figcaption>Obra de troca de piso no Jaraguá, BH.</figcaption>
-      </figure>
+
+      <div class="blueprint" aria-hidden="true">
+        <svg viewBox="0 0 400 400">
+          <!-- base em perspectiva -->
+          <path class="face" d="M200 330 L340 260 L340 150 L200 220 Z"/>
+          <path class="face" d="M200 330 L60 260 L60 150 L200 220 Z" style="fill:rgba(255,106,31,.04)"/>
+          <path class="ln soft" style="--len:900" d="M20 280 L200 370 L380 280 M20 280 L200 190 L380 280"/>
+          <path class="ln" style="--len:700" d="M60 260 L200 330 L340 260 L340 150 L200 220 L60 150 Z"/>
+          <path class="ln" style="--len:200" d="M200 330 L200 220"/>
+          <!-- telhado -->
+          <path class="ln" style="--len:600" d="M60 150 L130 70 L270 0 L340 150 M130 70 L200 220 M270 0 L340 150"/>
+          <path class="ln" style="--len:300" d="M130 70 L270 0" />
+          <!-- janela e porta -->
+          <path class="ln" style="--len:260" d="M240 245 L300 215 L300 175 L240 205 Z M270 230 L270 190"/>
+          <path class="ln" style="--len:260" d="M110 245 L150 265 L150 300 L110 280 Z"/>
+          <!-- cotas -->
+          <path class="ln soft" style="--len:400" d="M30 255 L30 145 M24 255 L36 255 M24 145 L36 145 M210 345 L350 275"/>
+          <text class="dim" x="0" y="205" transform="rotate(-90 14 200)">3,20 m</text>
+          <text class="dim" x="276" y="330">8,40 m</text>
+          <circle class="dot" cx="270" cy="0" r="4"/>
+          <circle class="dot" cx="340" cy="150" r="3"/>
+          <circle class="dot" cx="60" cy="150" r="3"/>
+        </svg>
+        <div class="chip c1"><b>01</b> Visita e avaliação</div>
+        <div class="chip c2"><b>02</b> Orçamento por etapa</div>
+        <div class="chip c3"><b>03</b> Obra entregue limpa</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <span>Construção</span><span>Reformas</span><span>Telhados</span><span>Infiltrações</span><span>Pisos</span><span>Pintura</span><span>Hidráulica</span><span>Calçadas</span>
+      <span>Construção</span><span>Reformas</span><span>Telhados</span><span>Infiltrações</span><span>Pisos</span><span>Pintura</span><span>Hidráulica</span><span>Calçadas</span>
     </div>
   </div>
 
   <section id="servicos">
     <div class="wrap">
-      <div class="head">
-        <p class="eyebrow">O que fazemos</p>
-        <h2>Serviços para a casa inteira</h2>
+      <div class="stats reveal" style="margin-bottom:110px">
+        <div><b class="grad">R$ 0</b><span>Custo do orçamento</span></div>
+        <div><b>7 dias</b><span>Atendimento, das 8h às 20h</span></div>
+        <div><b>3 cidades</b><span>BH, Contagem e Nova Lima</span></div>
+        <div><b>100%</b><span>Equipe própria na obra</span></div>
+      </div>
+      <div class="head reveal">
+        <p class="mono">O que fazemos</p>
+        <h2>Do reparo rápido à <span class="grad">obra completa.</span></h2>
         <p>Diga o que está incomodando. A gente avalia, explica a causa do problema e passa o orçamento por escrito.</p>
       </div>
-      <div class="services">
-        <article><span>Cobertura</span><h3>Telhados e calhas</h3><p>Revisão, troca de telhas, vedação e limpeza de calhas antes da temporada de chuva.</p></article>
-        <article><span>Umidade</span><h3>Infiltrações</h3><p>Tratamos a causa da mancha antes de pintar. Pintar por cima só esconde o problema.</p></article>
-        <article><span>Acabamento</span><h3>Pisos</h3><p>Troca de piso, remoção de cupim e preparo da base para o piso novo.</p></article>
-        <article><span>Acabamento</span><h3>Pintura</h3><p>Preparo de parede, massa e pintura para deixar o ambiente pronto para uso.</p></article>
-        <article><span>Instalações</span><h3>Hidráulica</h3><p>Reparo de vazamentos, troca de peças e pequenas instalações.</p></article>
-        <article><span>Ambientes</span><h3>Banheiros e cozinhas</h3><p>Reforma de ambientes molhados, com revestimento e bancadas.</p></article>
-        <article><span>Área externa</span><h3>Calçadas</h3><p>Recuperação e nivelamento de calçadas e áreas externas.</p></article>
-        <article><span>Manutenção</span><h3>Reparos gerais</h3><p>Pequenos serviços e manutenção preventiva para a casa funcionar bem.</p></article>
+      <div class="tiles">
+        <article class="tile big reveal"><span class="n">01</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg></div><h3>Telhados e calhas</h3><p>Revisão, troca de telhas, vedação e limpeza de calhas antes da temporada de chuva.</p></article>
+        <article class="tile reveal"><span class="n">02</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg></div><h3>Infiltrações</h3><p>Tratamos a causa da mancha antes de pintar.</p></article>
+        <article class="tile reveal"><span class="n">03</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="8"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="13" width="8" height="8"/></svg></div><h3>Pisos</h3><p>Troca de piso, remoção de cupim e preparo da base.</p></article>
+        <article class="tile reveal"><span class="n">04</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="14" height="6" rx="1"/><path d="M18 6h2v5h-8v3"/><rect x="10" y="14" width="4" height="7" rx="1"/></svg></div><h3>Pintura</h3><p>Preparo de parede, massa e pintura com o ambiente pronto para uso.</p></article>
+        <article class="tile reveal"><span class="n">05</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6v4H8v4a4 4 0 0 0 4 4h4v-2h4v6h-4v-2h-4a6 6 0 0 1-6-6V8H4z"/></svg></div><h3>Hidráulica</h3><p>Reparo de vazamentos, troca de peças e pequenas instalações.</p></article>
+        <article class="tile big reveal"><span class="n">06</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M6 12V5a2 2 0 0 1 4 0"/></svg></div><h3>Banheiros e cozinhas</h3><p>Reforma de ambientes molhados, com revestimento e bancadas.</p></article>
+        <article class="tile big reveal"><span class="n">07</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M5 20l3-12h8l3 12"/><path d="M9.5 14h5"/></svg></div><h3>Calçadas</h3><p>Recuperação e nivelamento de calçadas e áreas externas.</p></article>
+        <article class="tile big reveal"><span class="n">08</span><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></div><h3>Reparos gerais</h3><p>Manutenção ágil e preventiva para a casa funcionar bem.</p></article>
       </div>
     </div>
   </section>
 
-  <div class="checkup">
-    <div class="wrap">
+  <div class="wrap">
+    <div class="promo reveal">
       <div>
-        <p class="eyebrow" style="color:var(--ink)">Chuvas em BH</p>
-        <h2>Checkup Pré-Chuva</h2>
+        <p class="mono">Chuvas em BH</p>
+        <h2>Checkup <span class="grad">Pré-Chuva.</span></h2>
         <p>Avaliação de telhado, calhas e infiltrações sem custo. Mande CHUVA no WhatsApp e a gente agenda.</p>
       </div>
-      <a class="btn" href="https://wa.me/5531999846776?text=CHUVA" target="_blank" rel="noopener">Agendar o checkup</a>
+      <a class="btn" href="https://wa.me/5531999846776?text=CHUVA" target="_blank" rel="noopener">Agendar o checkup <span class="arr">→</span></a>
     </div>
   </div>
 
-  <section id="como" class="on-ink">
+  <section id="como">
     <div class="wrap">
-      <div class="head">
-        <p class="eyebrow">Como trabalhamos</p>
-        <h2>Sem surpresa no meio da obra</h2>
+      <div class="head reveal">
+        <p class="mono">Como trabalhamos</p>
+        <h2>Sem surpresa <span class="grad">no meio da obra.</span></h2>
         <p>Do primeiro contato à entrega, o caminho é o mesmo em toda obra.</p>
       </div>
-      <ol class="steps">
-        <li><h3>Visita para avaliar</h3><p>Vamos até o local, vemos o problema de perto e explicamos a causa.</p></li>
-        <li><h3>Orçamento por escrito</h3><p>Valores separados por etapa, para você saber o que está pagando.</p></li>
-        <li><h3>Equipe própria</h3><p>A execução é feita pela nossa equipe, com acompanhamento até o fim.</p></li>
-        <li><h3>Limpeza e entrega</h3><p>Entregamos o ambiente limpo e conferimos o resultado com você.</p></li>
+      <ol class="timeline" id="timeline">
+        <li class="reveal"><h3>Visita para avaliar</h3><p>Vamos até o local, vemos o problema de perto e explicamos a causa.</p></li>
+        <li class="reveal"><h3>Orçamento por escrito</h3><p>Valores separados por etapa, para você saber o que está pagando.</p></li>
+        <li class="reveal"><h3>Equipe própria</h3><p>A execução é feita pela nossa equipe, com acompanhamento até o fim.</p></li>
+        <li class="reveal"><h3>Limpeza e entrega</h3><p>Entregamos o ambiente limpo e conferimos o resultado com você.</p></li>
       </ol>
     </div>
   </section>
 
-  <section id="obras">
+  <section id="obras" style="padding-top:40px">
     <div class="wrap">
-      <div class="head">
-        <p class="eyebrow">Obras reais</p>
-        <h2>Antes e depois</h2>
-        <p>Fotos de obras da nossa equipe.</p>
+      <div class="head reveal">
+        <p class="mono">Obras reais</p>
+        <h2>Antes <span class="grad">e depois.</span></h2>
+        <p>Fotos reais de obras da nossa equipe, do começo ao acabamento.</p>
       </div>
 
-      <div class="case">
-        <h3>Troca de piso com remoção de cupim</h3>
-        <p class="meta">Jaraguá, BH. O piso antigo foi retirado, a base preparada e o piso novo instalado.</p>
+      <div class="case reveal">
+        <div class="text"><h3>Troca de piso com remoção de cupim.</h3><p>Jaraguá, BH. O piso antigo foi retirado, a base preparada e o piso novo instalado.</p></div>
+        <div class="pair land">
+          <figure><img src="img/piso-antes.jpg" width="1200" height="568" loading="lazy" alt="Quarto com piso de tacos parcialmente removido e base exposta"><figcaption>Antes</figcaption></figure>
+          <figure><img src="img/piso-depois.jpg" width="1200" height="568" loading="lazy" alt="Mesmo quarto com piso novo instalado"><figcaption class="after">Depois</figcaption></figure>
+        </div>
+      </div>
+
+      <div class="case reveal">
+        <div class="text"><h3>Calçada recuperada.</h3><p>O piso irregular foi nivelado e a faixa tátil foi mantida no lugar.</p></div>
+        <div class="pair land">
+          <figure><img src="img/calcada-antes.jpg" width="1200" height="756" loading="lazy" alt="Calçada com desníveis e piso irregular antes da obra"><figcaption>Antes</figcaption></figure>
+          <figure><img src="img/calcada-depois.jpg" width="1200" height="756" loading="lazy" alt="Mesma calçada com piso nivelado depois da obra"><figcaption class="after">Depois</figcaption></figure>
+        </div>
+      </div>
+
+      <div class="case reveal">
+        <div class="text"><h3>Infiltração: tratar a causa antes de pintar.</h3><p>Paredes e tetos com mancha ou umidade são preparados antes de qualquer acabamento.</p></div>
         <div class="pair">
-          <figure class="shot"><img src="img/piso-antes.jpg" width="1200" height="569" loading="lazy" alt="Quarto com piso de tacos parcialmente removido e base exposta"><b>Antes</b></figure>
-          <figure class="shot"><img src="img/piso-depois.jpg" width="1200" height="569" loading="lazy" alt="Mesmo quarto com piso novo instalado"><b class="after">Depois</b></figure>
+          <figure><img src="img/infiltracao.jpg" width="758" height="1599" loading="lazy" alt="Parede com infiltração e reboco solto em obra"><figcaption>Parede</figcaption></figure>
+          <figure><img src="img/teto.jpg" width="757" height="1600" loading="lazy" alt="Profissional raspando mancha de umidade no teto"><figcaption>Teto</figcaption></figure>
         </div>
       </div>
-
-      <div class="case">
-        <h3>Calçada recuperada</h3>
-        <p class="meta">O piso irregular foi nivelado e a faixa tátil foi mantida no lugar.</p>
-        <div class="pair">
-          <figure class="shot"><img src="img/calcada-antes.jpg" width="1200" height="756" loading="lazy" alt="Calçada com desníveis e piso irregular antes da obra"><b>Antes</b></figure>
-          <figure class="shot"><img src="img/calcada-depois.jpg" width="1200" height="756" loading="lazy" alt="Mesma calçada com piso nivelado depois da obra"><b class="after">Depois</b></figure>
-        </div>
+      <div class="gallery-head reveal">
+        <h3>Galeria de obras.</h3>
+        <p><span id="g-count">26</span> fotos reais da nossa equipe. Toque em uma foto para ampliar.</p>
       </div>
-
-      <div class="case">
-        <h3>Infiltração: tratar a causa antes de pintar</h3>
-        <p class="meta">Paredes e tetos com mancha ou umidade são preparados antes de qualquer acabamento.</p>
-        <div class="pair tall">
-          <figure class="shot"><img src="img/infiltracao.jpg" width="800" height="1688" loading="lazy" alt="Parede com infiltração e reboco solto em obra"><b>Parede</b></figure>
-          <figure class="shot"><img src="img/teto.jpg" width="800" height="1693" loading="lazy" alt="Profissional raspando mancha de umidade no teto"><b>Teto</b></figure>
-        </div>
+      <div class="filters reveal" role="group" aria-label="Filtrar fotos por tipo de obra">
+        <button type="button" class="on" data-f="todas">Todas</button>
+        <button type="button" data-f="pintura">Pintura e paredes</button>
+        <button type="button" data-f="banheiro">Banheiros</button>
+        <button type="button" data-f="drywall">Drywall</button>
+        <button type="button" data-f="eletrica">Elétrica</button>
+        <button type="button" data-f="externa">Área externa</button>
       </div>
-      <a class="btn btn-ghost" href="https://www.instagram.com/curtoesilva/" target="_blank" rel="noopener">Ver mais obras no Instagram</a>
+      <div class="gallery" id="gallery">
+          <figure class="g-item" data-cat="externa"><button type="button" class="g-open" aria-label="Ampliar foto: Canil com chão de terra irregular"><img src="img/obras/canil-antes.jpg" width="1100" height="521" loading="lazy" alt="Canil com chão de terra irregular"></button><span class="g-tag">Antes</span><figcaption>Canil com chão de terra irregular</figcaption></figure>
+          <figure class="g-item" data-cat="externa"><button type="button" class="g-open" aria-label="Ampliar foto: Canil com piso de concreto nivelado"><img src="img/obras/canil-depois.jpg" width="521" height="1100" loading="lazy" alt="Canil com piso de concreto nivelado"></button><span class="g-tag after">Depois</span><figcaption>Canil com piso de concreto nivelado</figcaption></figure>
+          <figure class="g-item" data-cat="drywall"><button type="button" class="g-open" aria-label="Ampliar foto: Corredor com placas de drywall instaladas"><img src="img/obras/corredor-drywall-instalado.jpg" width="828" height="1100" loading="lazy" alt="Corredor com placas de drywall instaladas"></button><span class="g-tag doing">Em andamento</span><figcaption>Corredor com placas de drywall instaladas</figcaption></figure>
+          <figure class="g-item" data-cat="eletrica"><button type="button" class="g-open" aria-label="Ampliar foto: Tomada aberta e parede manchada"><img src="img/obras/tomada-aberta-mancha-antes-1.jpg" width="1100" height="825" loading="lazy" alt="Tomada aberta e parede manchada"></button><span class="g-tag">Antes</span><figcaption>Tomada aberta e parede manchada</figcaption></figure>
+          <figure class="g-item" data-cat="eletrica"><button type="button" class="g-open" aria-label="Ampliar foto: Tomada nova e parede pintada"><img src="img/obras/tomada-nova-depois.jpg" width="1100" height="825" loading="lazy" alt="Tomada nova e parede pintada"></button><span class="g-tag after">Depois</span><figcaption>Tomada nova e parede pintada</figcaption></figure>
+          <figure class="g-item" data-cat="banheiro"><button type="button" class="g-open" aria-label="Ampliar foto: Teto do banheiro com aberturas"><img src="img/obras/banheiro-teto-aberturas-antes.jpg" width="520" height="1100" loading="lazy" alt="Teto do banheiro com aberturas"></button><span class="g-tag">Antes</span><figcaption>Teto do banheiro com aberturas</figcaption></figure>
+          <figure class="g-item" data-cat="banheiro"><button type="button" class="g-open" aria-label="Ampliar foto: Teto do banheiro depois do reparo"><img src="img/obras/banheiro-teto-depois.jpg" width="521" height="1100" loading="lazy" alt="Teto do banheiro depois do reparo"></button><span class="g-tag after">Depois</span><figcaption>Teto do banheiro depois do reparo</figcaption></figure>
+          <figure class="g-item" data-cat="drywall"><button type="button" class="g-open" aria-label="Ampliar foto: Massa nas emendas do drywall"><img src="img/obras/corredor-drywall-massa.jpg" width="828" height="1100" loading="lazy" alt="Massa nas emendas do drywall"></button><span class="g-tag doing">Em andamento</span><figcaption>Massa nas emendas do drywall</figcaption></figure>
+          <figure class="g-item" data-cat="pintura"><button type="button" class="g-open" aria-label="Ampliar foto: Quarto pintado"><img src="img/obras/quarto-pintado-depois-1.jpg" width="1100" height="521" loading="lazy" alt="Quarto pintado"></button><span class="g-tag after">Depois</span><figcaption>Quarto pintado</figcaption></figure>
+          <figure class="g-item" data-cat="pintura"><button type="button" class="g-open" aria-label="Ampliar foto: Parede com mofo"><img src="img/obras/parede-mofo-antes-1.jpg" width="521" height="1100" loading="lazy" alt="Parede com mofo"></button><span class="g-tag">Antes</span><figcaption>Parede com mofo</figcaption></figure>
+          <figure class="g-item" data-cat="pintura"><button type="button" class="g-open" aria-label="Ampliar foto: Parede tratada e pintada"><img src="img/obras/parede-pintada-depois-1.jpg" width="521" height="1100" loading="lazy" alt="Parede tratada e pintada"></button><span class="g-tag after">Depois</span><figcaption>Parede tratada e pintada</figcaption></figure>
+          <figure class="g-item" data-cat="externa"><button type="button" class="g-open" aria-label="Ampliar foto: Calçada com piso tátil recuperado"><img src="img/obras/calcada-tatil-recuperada.jpg" width="619" height="1100" loading="lazy" alt="Calçada com piso tátil recuperado"></button><span class="g-tag after">Depois</span><figcaption>Calçada com piso tátil recuperado</figcaption></figure>
+          <figure class="g-item" data-cat="drywall"><button type="button" class="g-open" aria-label="Ampliar foto: Corredor pintado"><img src="img/obras/corredor-pintado-1.jpg" width="619" height="1100" loading="lazy" alt="Corredor pintado"></button><span class="g-tag after">Depois</span><figcaption>Corredor pintado</figcaption></figure>
+          <figure class="g-item" data-cat="banheiro"><button type="button" class="g-open" aria-label="Ampliar foto: Box com granito e rejunte"><img src="img/obras/box-granito-rejunte.jpg" width="825" height="1100" loading="lazy" alt="Box com granito e rejunte"></button><figcaption>Box com granito e rejunte</figcaption></figure>
+          <figure class="g-item" data-cat="eletrica"><button type="button" class="g-open" aria-label="Ampliar foto: Fiação exposta perto do chuveiro"><img src="img/obras/chuveiro-fiacao-antes.jpg" width="1100" height="520" loading="lazy" alt="Fiação exposta perto do chuveiro"></button><span class="g-tag">Antes</span><figcaption>Fiação exposta perto do chuveiro</figcaption></figure>
+          <figure class="g-item" data-cat="externa"><button type="button" class="g-open" aria-label="Ampliar foto: Equipe trabalhando no telhado"><img src="img/obras/func-telhado.jpg" width="494" height="1100" loading="lazy" alt="Equipe trabalhando no telhado"></button><figcaption>Equipe trabalhando no telhado</figcaption></figure>
+          <figure class="g-item" data-cat="pintura"><button type="button" class="g-open" aria-label="Ampliar foto: Sala com umidade na parede"><img src="img/obras/sala-umidade-antes.jpg" width="521" height="1100" loading="lazy" alt="Sala com umidade na parede"></button><span class="g-tag">Antes</span><figcaption>Sala com umidade na parede</figcaption></figure>
+          <figure class="g-item" data-cat="pintura"><button type="button" class="g-open" aria-label="Ampliar foto: Reparo de parede perto da janela"><img src="img/obras/janela-parede-reparo-andamento.jpg" width="521" height="1100" loading="lazy" alt="Reparo de parede perto da janela"></button><span class="g-tag doing">Em andamento</span><figcaption>Reparo de parede perto da janela</figcaption></figure>
+          <figure class="g-item" data-cat="pintura"><button type="button" class="g-open" aria-label="Ampliar foto: Parede pintada com rodapé"><img src="img/obras/rodape-parede-pintada.jpg" width="1100" height="825" loading="lazy" alt="Parede pintada com rodapé"></button><span class="g-tag after">Depois</span><figcaption>Parede pintada com rodapé</figcaption></figure>
+          <figure class="g-item" data-cat="banheiro"><button type="button" class="g-open" aria-label="Ampliar foto: Box com ralo, depois da obra"><img src="img/obras/ralo-box-depois-1.jpg" width="521" height="1100" loading="lazy" alt="Box com ralo, depois da obra"></button><span class="g-tag after">Depois</span><figcaption>Box com ralo, depois da obra</figcaption></figure>
+          <figure class="g-item" data-cat="externa"><button type="button" class="g-open" aria-label="Ampliar foto: Calçada de esquina"><img src="img/obras/calcada-esquina-1.jpg" width="619" height="1100" loading="lazy" alt="Calçada de esquina"></button><figcaption>Calçada de esquina</figcaption></figure>
+          <figure class="g-item" data-cat="drywall"><button type="button" class="g-open" aria-label="Ampliar foto: Corredor finalizado"><img src="img/obras/corredor-pintado-2.jpg" width="619" height="1100" loading="lazy" alt="Corredor finalizado"></button><span class="g-tag after">Depois</span><figcaption>Corredor finalizado</figcaption></figure>
+          <figure class="g-item" data-cat="eletrica"><button type="button" class="g-open" aria-label="Ampliar foto: Tomada de 3 pinos instalada"><img src="img/obras/tomada-3-pinos-depois.jpg" width="520" height="1100" loading="lazy" alt="Tomada de 3 pinos instalada"></button><span class="g-tag after">Depois</span><figcaption>Tomada de 3 pinos instalada</figcaption></figure>
+          <figure class="g-item" data-cat="banheiro"><button type="button" class="g-open" aria-label="Ampliar foto: Ducha higiênica instalada"><img src="img/obras/ducha-higienica-depois.jpg" width="521" height="1100" loading="lazy" alt="Ducha higiênica instalada"></button><span class="g-tag after">Depois</span><figcaption>Ducha higiênica instalada</figcaption></figure>
+          <figure class="g-item" data-cat="pintura"><button type="button" class="g-open" aria-label="Ampliar foto: Quarto pintado e pronto para uso"><img src="img/obras/quarto-pintado-depois-2.jpg" width="1100" height="521" loading="lazy" alt="Quarto pintado e pronto para uso"></button><span class="g-tag after">Depois</span><figcaption>Quarto pintado e pronto para uso</figcaption></figure>
+          <figure class="g-item" data-cat="externa"><button type="button" class="g-open" aria-label="Ampliar foto: Calçada de esquina, outro ângulo"><img src="img/obras/calcada-esquina-2.jpg" width="619" height="1100" loading="lazy" alt="Calçada de esquina, outro ângulo"></button><figcaption>Calçada de esquina, outro ângulo</figcaption></figure>
+      </div>
+      <dialog class="lightbox" id="lightbox" aria-label="Foto ampliada">
+        <button type="button" class="lb-close" aria-label="Fechar">×</button>
+        <button type="button" class="lb-nav prev" aria-label="Foto anterior">‹</button>
+        <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+        <button type="button" class="lb-nav next" aria-label="Próxima foto">›</button>
+      </dialog>
+      <p class="center"><a class="link" href="https://www.instagram.com/curtoesilva/" target="_blank" rel="noopener">Ver mais obras no Instagram →</a></p>
     </div>
   </section>
 
-  <section id="duvidas" style="background:var(--white)">
+  <section id="duvidas" style="padding-top:40px">
     <div class="wrap">
-      <div class="head">
-        <p class="eyebrow">Dúvidas frequentes</p>
-        <h2>Antes de chamar</h2>
+      <div class="head center reveal">
+        <p class="mono">Dúvidas frequentes</p>
+        <h2>Antes de chamar.</h2>
       </div>
-      <div class="faq">
+      <div class="faq reveal">
         <details><summary>O orçamento tem custo?</summary><p>Não. O orçamento é sem custo. Você descreve o que precisa pelo WhatsApp e a gente combina a visita para avaliar.</p></details>
         <details><summary>Quais regiões vocês atendem?</summary><p>Atendemos Belo Horizonte, Contagem, Nova Lima e região. Mande o seu bairro no WhatsApp que confirmamos.</p></details>
         <details><summary>Fazem serviço pequeno?</summary><p>Fazemos. Atendemos desde um reparo pequeno até uma reforma completa.</p></details>
@@ -288,40 +455,41 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
     </div>
   </section>
 
-  <section id="contato" class="on-ink contact">
+  <section id="contato" class="contact" style="padding-top:40px">
     <div class="wrap">
-      <div>
-        <p class="eyebrow">Orçamento sem custo</p>
-        <h2>Conte o que você precisa</h2>
-        <p class="lead">Preencha em 1 minuto. A mensagem abre pronta no WhatsApp e a gente responde para combinar a visita.</p>
-        <dl class="info">
-          <div><dt>WhatsApp</dt><dd>(31) 99984-6776</dd></div>
-          <div><dt>E-mail</dt><dd><a href="mailto:atendimento@curtoesilva.com.br">atendimento@curtoesilva.com.br</a></dd></div>
-          <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/curtoesilva/" target="_blank" rel="noopener">@curtoesilva</a></dd></div>
-          <div><dt>Atendimento</dt><dd>Belo Horizonte, Contagem, Nova Lima e região</dd></div>
-          <div><dt>Horário</dt><dd>Todos os dias, das 8h às 20h</dd></div>
-        </dl>
+      <div class="head reveal">
+        <p class="mono">Orçamento sem custo</p>
+        <h2>Conte o que você <span class="grad">precisa.</span></h2>
+        <p>Preencha em 1 minuto. A mensagem abre pronta no WhatsApp e a gente responde para combinar a visita.</p>
       </div>
-      <form class="card" id="lead" onsubmit="return false">
-        <label for="f-nome">Seu nome</label>
-        <input id="f-nome" type="text" autocomplete="name" placeholder="Como podemos te chamar?">
-        <label for="f-cidade">Onde fica o serviço?</label>
-        <select id="f-cidade">
-          <option>Belo Horizonte</option><option>Contagem</option><option>Nova Lima</option><option>Outra cidade da região</option>
-        </select>
-        <label for="f-bairro">Bairro</label>
-        <input id="f-bairro" type="text" placeholder="Ex.: Jaraguá, Buritis, Eldorado">
-        <label for="f-servico">O que você precisa?</label>
-        <select id="f-servico">
-          <option>Telhado ou calha</option><option>Infiltração ou mancha</option><option>Piso</option><option>Pintura</option><option>Hidráulica</option><option>Reforma de banheiro ou cozinha</option><option>Calçada ou área externa</option><option>Outro serviço</option>
-        </select>
-        <label for="f-obs">Conte mais (opcional)</label>
-        <textarea id="f-obs" rows="3" placeholder="Descreva o problema. Depois você pode mandar fotos no WhatsApp."></textarea>
-        <a class="btn btn-primary" id="f-send" href="https://wa.me/5531999846776" target="_blank" rel="noopener">Enviar pelo WhatsApp</a>
-      </form>
+      <div class="grid">
+        <div class="panel reveal">
+          <dl class="info">
+            <div><dt>WhatsApp</dt><dd>(31) 99984-6776</dd></div>
+            <div><dt>E-mail</dt><dd><a href="mailto:atendimento@curtoesilva.com.br">atendimento@curtoesilva.com.br</a></dd></div>
+            <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/curtoesilva/" target="_blank" rel="noopener">@curtoesilva</a></dd></div>
+            <div><dt>Atendimento</dt><dd>Belo Horizonte, Contagem, Nova Lima e região</dd></div>
+            <div><dt>Horário</dt><dd>Todos os dias, das 8h às 20h</dd></div>
+          </dl>
+        </div>
+        <form class="panel form reveal" id="lead" onsubmit="return false">
+          <label for="f-nome">Seu nome<input id="f-nome" type="text" autocomplete="name" placeholder="Como podemos te chamar?"></label>
+          <label for="f-cidade">Onde fica o serviço?<select id="f-cidade"><option>Belo Horizonte</option><option>Contagem</option><option>Nova Lima</option><option>Outra cidade da região</option></select></label>
+          <label for="f-bairro">Bairro<input id="f-bairro" type="text" placeholder="Ex.: Jaraguá, Buritis, Eldorado"></label>
+          <label for="f-servico">O que você precisa?<select id="f-servico"><option>Telhado ou calha</option><option>Infiltração ou mancha</option><option>Piso</option><option>Pintura</option><option>Hidráulica</option><option>Reforma de banheiro ou cozinha</option><option>Calçada ou área externa</option><option>Construção</option><option>Outro serviço</option></select></label>
+          <label for="f-obs">Conte mais (opcional)<textarea id="f-obs" rows="3" placeholder="Descreva o problema. Depois você pode mandar fotos no WhatsApp."></textarea></label>
+          <a class="btn" id="f-send" href="https://wa.me/5531999846776" target="_blank" rel="noopener">Enviar pelo WhatsApp <span class="arr">→</span></a>
+        </form>
+      </div>
     </div>
   </section>
 </main>
+
+<footer>
+  <div class="wrap"><span>Curto e Silva · Construção, reformas e manutenção · Belo Horizonte, Contagem e Nova Lima</span><span>CURTO E SILVA - REFORMAS E CONSTRUCAO LTDA · CNPJ 30.569.236/0001-04</span></div>
+</footer>
+
+<a class="float" href="https://wa.me/5531999846776?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20sem%20custo." target="_blank" rel="noopener" aria-label="Chamar no WhatsApp"><i></i>WhatsApp</a>
 
 <script>
 (function(){
@@ -334,11 +502,45 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
   }
   ['f-nome','f-cidade','f-bairro','f-servico','f-obs'].forEach(function(id){var e=$(id);if(e){e.addEventListener('input',montar);e.addEventListener('change',montar)}});
   montar();
+
+  // galeria: filtros e foto ampliada
+  var gal=$('gallery'), lb=$('lightbox'), lbImg=$('lb-img'), lbCap=$('lb-cap'), atual=0;
+  var itens=[].slice.call(gal.querySelectorAll('.g-item'));
+  document.querySelectorAll('.filters button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.filters button').forEach(function(x){x.classList.toggle('on',x===b)});
+      var f=b.dataset.f, n=0;
+      itens.forEach(function(it){var ok=f==='todas'||it.dataset.cat===f;it.hidden=!ok;if(ok)n++});
+      $('g-count').textContent=n;
+    });
+  });
+  function visiveis(){return itens.filter(function(it){return !it.hidden})}
+  function mostrar(i){var v=visiveis();atual=(i+v.length)%v.length;var im=v[atual].querySelector('img');lbImg.src=im.src;lbImg.alt=im.alt;lbCap.textContent=im.alt}
+  itens.forEach(function(it){it.querySelector('.g-open').addEventListener('click',function(){mostrar(visiveis().indexOf(it));if(lb.showModal)lb.showModal()})});
+  lb.querySelector('.lb-close').addEventListener('click',function(){lb.close()});
+  lb.querySelector('.prev').addEventListener('click',function(){mostrar(atual-1)});
+  lb.querySelector('.next').addEventListener('click',function(){mostrar(atual+1)});
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.close()});
+  lb.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')mostrar(atual-1);if(e.key==='ArrowRight')mostrar(atual+1)});
+
+  // topo fica fosco ao rolar
+  var top=$('top');
+  function onScroll(){top.classList.toggle('solid',scrollY>20)}
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // luz que segue o mouse nos cartões
+  document.querySelectorAll('.tile').forEach(function(t){
+    t.addEventListener('pointermove',function(e){var r=t.getBoundingClientRect();t.style.setProperty('--mx',(e.clientX-r.left)+'px');t.style.setProperty('--my',(e.clientY-r.top)+'px')});
+  });
+
+  // aparecer ao rolar + linha do tempo
+  var els=document.querySelectorAll('.reveal'), tl=$('timeline');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){io.observe(el)});
+    var io2=new IntersectionObserver(function(es){if(es[0].isIntersecting){tl.style.setProperty('--prog',1);io2.disconnect()}},{threshold:.4});
+    io2.observe(tl);
+  } else {els.forEach(function(el){el.classList.add('in')});tl.style.setProperty('--prog',1)}
 })();
 </script>
-<footer>
-  <div class="wrap"><span>Curto e Silva · Reformas e manutenções</span><span>Belo Horizonte · Contagem · Nova Lima</span><span style="flex-basis:100%;opacity:.75;font-size:.85rem">CURTO E SILVA - REFORMAS E CONSTRUCAO LTDA · CNPJ 30.569.236/0001-04</span></div>
-</footer>
-
-<a class="float" href="https://wa.me/5531999846776?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20sem%20custo." target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">WhatsApp</a>
 </body></html>
