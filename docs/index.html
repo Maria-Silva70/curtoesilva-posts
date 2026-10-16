@@ -239,7 +239,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
   .blueprint .ln{stroke-dashoffset:0}.blueprint .face,.blueprint .dim,.blueprint .dot,.chip{opacity:1}
   .timeline{--prog:1}
 }
-</style>
+/* Toque com resposta imediata (pressionar) */.btn,.float,.filters button,.g-open,.lb-nav,.lb-close{-webkit-tap-highlight-color:transparent;touch-action:manipulation}.btn:active{transform:scale(.97);transition:transform 90ms ease-out}.float:active,.filters button:active,.lb-nav:active,.lb-close:active{transform:scale(.94);transition:transform 90ms ease-out}.g-open:active img{transform:scale(.98);transition:transform 90ms ease-out}#lb-img{touch-action:pan-y;user-select:none;-webkit-user-drag:none;will-change:transform}@media (prefers-reduced-motion:reduce){.btn:active,.float:active,.filters button:active,.lb-nav:active,.lb-close:active,.g-open:active img{transform:none}}</style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Curto e Silva","description":"Construção, reformas e manutenção residencial em Belo Horizonte, Contagem, Nova Lima e região, com equipe própria e orçamento sem custo.","telephone":"+55 31 99984-6776","areaServed":[{"@type":"City","name":"Belo Horizonte"},{"@type":"City","name":"Contagem"},{"@type":"City","name":"Nova Lima"}],"email":"atendimento@curtoesilva.com.br","legalName":"CURTO E SILVA - REFORMAS E CONSTRUCAO LTDA","taxID":"30.569.236/0001-04","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"08:00","closes":"20:00"}],"url":"https://curtoesilva.com.br/","sameAs":["https://www.instagram.com/curtoesilva/","https://maps.google.com/maps?cid=264497430266549250"],"image":"https://curtoesilva.com.br/img/equipe.jpg"}
 </script>
@@ -521,6 +521,15 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
   lb.querySelector('.lb-close').addEventListener('click',function(){lb.close()});
   lb.querySelector('.prev').addEventListener('click',function(){mostrar(atual-1)});
   lb.querySelector('.next').addEventListener('click',function(){mostrar(atual+1)});
+  /* Deslizar a foto ampliada com o dedo (segue o dedo e troca de foto) */
+  (function(){var x0=null,dx=0,id=null,red=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    lbImg.addEventListener('pointerdown',function(e){x0=e.clientX;dx=0;id=e.pointerId;lbImg.setPointerCapture(id);lbImg.style.transition='none'});
+    lbImg.addEventListener('pointermove',function(e){if(x0===null)return;dx=e.clientX-x0;if(!red)lbImg.style.transform='translateX('+dx+'px)'});
+    function fim(){if(x0===null)return;var d=dx;x0=null;lbImg.style.transition='transform 220ms cubic-bezier(.2,.8,.2,1)';lbImg.style.transform='';
+      if(Math.abs(d)>50){mostrar(atual+(d<0?1:-1))}}
+    lbImg.addEventListener('pointerup',fim);lbImg.addEventListener('pointercancel',fim);
+  })();
+
   lb.addEventListener('click',function(e){if(e.target===lb)lb.close()});
   lb.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')mostrar(atual-1);if(e.key==='ArrowRight')mostrar(atual+1)});
 
