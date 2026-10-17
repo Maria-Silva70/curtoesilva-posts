@@ -155,6 +155,30 @@ textarea{resize:vertical;min-height:70px}
 .p-foot b{color:var(--paper-ink)}
 .p-foot em{display:block;color:var(--accent);font-weight:700}
 .ph{background:#FFF3A3}
+.home{max-width:620px;margin:0 auto;padding-block:28px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:18px}
+body[data-view="home"] .wrap, body[data-view="home"] .tabs, body[data-view="home"] #bPdf, body[data-view="home"] #bInicio{display:none}
+body:not([data-view="home"]) .home{display:none}
+.home h2{font-family:var(--display);font-weight:800;font-size:34px;letter-spacing:.02em;text-transform:uppercase;margin:0;line-height:1}
+.home .sub{color:var(--muted);margin:4px 0 0}
+.btn-novo{font:800 22px var(--display);letter-spacing:.06em;text-transform:uppercase;background:var(--accent);color:#fff;border:0;border-radius:14px;padding:26px 20px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 6px 18px rgba(232,96,28,.28);transition:transform .12s}
+.btn-novo:active{transform:scale(.98)}
+.btn-novo span{font-size:34px;line-height:0;font-weight:700}
+.btn-novo:focus-visible{outline:3px solid var(--fg);outline-offset:3px}
+.cont{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:14px 16px;cursor:pointer;text-align:left;font:inherit;color:inherit;width:100%}
+.cont:hover{border-color:var(--accent)}
+.cont .t{flex:1;min-width:0}
+.cont b{display:block}
+.cont small{color:var(--muted)}
+.cont .seta{font-size:22px;color:var(--accent);font-weight:700}
+.home h3{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:10px 0 0}
+.hist{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.hi{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 16px;border:0;border-bottom:1px solid var(--line);background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer;width:100%}
+.hi:last-child{border-bottom:0}
+.hi:hover{background:var(--sunk)}
+.hi .num{font-family:var(--display);font-weight:800;color:var(--accent);font-size:17px;font-variant-numeric:tabular-nums}
+.hi .cli{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hi .cli small{display:block;color:var(--muted);font-size:12px}
+.hi .val{font-weight:700;font-variant-numeric:tabular-nums}
 .vh{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;pointer-events:none}
 .ph-btns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .ph-btns label.btn{cursor:pointer}
@@ -194,7 +218,7 @@ textarea{resize:vertical;min-height:70px}
     <img src="LOGO_SRC" alt="">
     <h1>Orçamento<small>Curto e Silva · gerador</small></h1>
     <div class="sp"></div>
-    <button class="btn ghost hide-s" id="bNovo" type="button">Novo</button>
+    <button class="btn ghost" id="bInicio" type="button">Início</button>
     <button class="btn pri" id="bPdf" type="button">Baixar PDF</button>
   </div>
   <div class="tabs" role="tablist">
@@ -202,6 +226,13 @@ textarea{resize:vertical;min-height:70px}
     <button role="tab" id="tVer" aria-selected="false" type="button">2. Ver orçamento</button>
   </div>
 </header>
+
+<section class="home" id="home" aria-label="Início">
+  <div><h2>Orçamentos</h2><p class="sub">Curto e Silva · visita, fotos, valores e PDF assinado</p></div>
+  <button class="btn-novo" id="hNovo" type="button"><span>+</span> Novo orçamento</button>
+  <div id="hCont"></div>
+  <div id="hHist"></div>
+</section>
 
 <main class="wrap">
   <section class="col edit-col">
@@ -212,14 +243,14 @@ textarea{resize:vertical;min-height:70px}
         <label class="f">Telefone<input id="cTel" inputmode="tel" autocomplete="off"></label>
         <label class="f full">Endereço da obra<input id="cEnd" autocomplete="off"></label>
         <label class="f">Data da visita<input id="cVisita" type="date"></label>
-        <label class="f">Nº do orçamento<input id="oNum"></label>
+        <label class="f">Nº do orçamento<input id="oNum" readonly placeholder="Sai ao baixar o PDF" aria-describedby="numHint"></label>
       </div>
     </div>
 
     <div class="step">
       <h2><b>2</b> O que encontramos</h2>
-      <p class="hint">2 ou 3 frases simples: o problema e a causa. É o que mais passa confiança.</p>
-      <textarea id="oDiag" rows="3"></textarea>
+      <p class="hint">Escreva o <b>problema que você viu</b> e a causa, não o que vai ser feito (isso já vai na lista de serviços). É o que dá cara de laudo.</p>
+      <textarea id="oDiag" rows="3" placeholder="Ex.: Telhas quebradas perto da calha e calha solta em cima da mureta. Por isso a água da chuva está entrando e manchando o teto do quarto."></textarea>
     </div>
 
     <div class="step">
@@ -290,6 +321,15 @@ textarea{resize:vertical;min-height:70px}
         <span class="ok-msg" id="sigStatus"></span>
       </div>
       <label class="check"><input type="checkbox" id="sigUsar" checked> Colocar a assinatura neste orçamento</label>
+    </div>
+    <div class="step" id="stepBase">
+      <h2><b>8</b> Base de orçamentos</h2>
+      <p class="hint">Cada orçamento ganha um número que nunca se repete e fica guardado na planilha da Curto e Silva, com o PDF no Google Drive. Coloque o código da equipe uma vez só.</p>
+      <div class="row">
+        <input id="codEquipe" placeholder="Código da equipe" autocomplete="off" autocapitalize="characters" style="max-width:220px" aria-label="Código da equipe">
+        <button class="btn" id="codSalvar" type="button">Conectar</button>
+        <span class="ok-msg" id="baseStatus"></span>
+      </div>
     </div>
     <button class="btn" id="bZap" type="button" style="align-self:flex-start">Copiar resumo para o WhatsApp</button>
   </section>
@@ -394,7 +434,7 @@ function extenso(v){
 }
 
 // ---------- estado ----------
-const DEF = () => ({cNome:"",cTel:"",cEnd:"",cVisita:isoToday(),oNum:new Date().getFullYear()+"-"+String(Math.floor(Math.random()*900)+100),
+const DEF = () => ({cNome:"",cTel:"",cEnd:"",cVisita:isoToday(),oNum:"", numBase:false,
   oDiag:"", serv:[], mats:[], vMo:"", vMat:"", vSep:false,
   cPag:"50% de sinal e 50% na conclusão", cPrazo:"01 a 02 dias", cIni:"A combinar, após o sinal", cVal:isoToday(16), cGar:"", cNao:""});
 let S = DEF(); let moAuto = true; let catSel = "Todos";
@@ -404,8 +444,11 @@ try{ const r=localStorage.getItem("cs-servicos-extra"); if(r) EXTRA=JSON.parse(r
 const save = () => { try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} };
 
 const FIELDS=["cNome","cTel","cEnd","cVisita","oNum","oDiag","vMo","vMat","cPag","cPrazo","cIni","cVal","cGar","cNao"];
+function fmtTel(v){ const d=String(v).replace(/\D/g,"").replace(/^55(?=\d{10,11}$)/,"").slice(0,11);
+  if(d.length<3) return d; if(d.length<=6) return `(${d.slice(0,2)}) ${d.slice(2)}`;
+  if(d.length<=10) return `(${d.slice(0,2)}) ${d.slice(2,6)}-${d.slice(6)}`; return `(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7)}`; }
 function bindFields(){
-  FIELDS.forEach(id=>{ const el=$("#"+id); el.value=S[id]||""; el.addEventListener("input",()=>{ S[id]=el.value; if(id==="vMo") moAuto=false; refresh(); }); });
+  FIELDS.forEach(id=>{ const el=$("#"+id); el.value=S[id]||""; el.addEventListener("input",()=>{ if(id==="cTel"){ const f=fmtTel(el.value); if(f!==el.value && !/[-) ]$/.test(el.value)) el.value=f; } S[id]=el.value; if(id==="vMo") moAuto=false; refresh(); }); });
   $("#vSep").checked=!!S.vSep; $("#vSep").addEventListener("change",e=>{S.vSep=e.target.checked; refresh();});
 }
 
@@ -491,7 +534,8 @@ function totals(){
 }
 
 // ---------- folha ----------
-const ph = (v,txt) => v ? esc(v) : `<span class="ph">${esc(txt)}</span>`;
+let MODO_PDF=false;
+const ph = (v,txt) => v ? esc(v) : (MODO_PDF ? "" : `<span class="ph">${esc(txt)}</span>`);
 function paperHTML(){
   const t=totals(); const nos=S.mats.filter(m=>m.quem==="nosso"&&m.nome.trim()), cli=S.mats.filter(m=>m.quem==="cliente"&&m.nome.trim());
   const temVal=S.serv.some(s=>num(s.valor)>0);
@@ -499,12 +543,12 @@ function paperHTML(){
   let n=0; const sec=t=>`<div class="p-sec"><b>${String(++n).padStart(2,"0")}</b><span>${t}</span></div>`;
   const resp = (SIG&&SIG.nome)||"Allan Curto";
   const fotos = FOTOS.filter(f=>f.src);
-  const fotosHTML = () => fotos.length ? `<div class="b">${sec("Registro fotográfico da visita")}</div>` + Array.from({length:Math.ceil(fotos.length/2)},(_,r)=>`<div class="b p-fotos">${fotos.slice(r*2,r*2+2).map((f,j)=>`<figure><img src="${f.src}" alt=""><figcaption><b>Foto ${r*2+j+1}</b>${f.cap.trim()?esc(f.cap):'<span class="ph">Escreva o que a foto mostra</span>'}</figcaption></figure>`).join("")}</div>`).join("") : "";
+  const fotosHTML = () => fotos.length ? `<div class="b">${sec("Registro fotográfico da visita")}</div>` + Array.from({length:Math.ceil(fotos.length/2)},(_,r)=>`<div class="b p-fotos">${fotos.slice(r*2,r*2+2).map((f,j)=>`<figure><img src="${f.src}" alt=""><figcaption><b>Foto ${r*2+j+1}</b>${f.cap.trim()?esc(f.cap):(MODO_PDF?"":'<span class="ph">Escreva o que a foto mostra</span>')}</figcaption></figure>`).join("")}</div>`).join("") : "";
   const assinado = SIG&&SIG.img&&S.sigUsar!==false;
   const matsTxt = nos.length&&cli.length ? "Mão de obra + material da nossa lista" : nos.length ? "Mão de obra + todo o material para a execução do serviço" : "Mão de obra (material por conta do cliente)";
   return `
   <div class="p-head"><img src="${LOGO}" alt=""><div class="nm"><b>CURTO E SILVA</b><span>Reformas, construção e manutenção · BH, Contagem e Nova Lima</span></div>
-    <div class="no"><b>ORÇAMENTO</b>Nº ${ph(S.oNum,"0000")}</div></div>
+    <div class="no"><b>ORÇAMENTO</b>Nº ${ph(S.oNum,"sai no PDF")}</div></div>
   <div class="pin">
    <div class="b"><h1 class="p-title">${fotos.length?"Laudo da visita e orçamento":"Orçamento de manutenção"}</h1>
     <p class="p-hello">Olá${primeiro?", "+esc(primeiro):""}! Obrigado por chamar a Curto e Silva. Este orçamento foi feito depois da visita técnica, com tudo o que vimos no local.</p></div>
@@ -515,7 +559,7 @@ function paperHTML(){
    ${S.oDiag.trim()?`<div class="b">${sec("O que encontramos na visita")}<p class="p-diag">${esc(S.oDiag).replace(/\n/g,"<br>")}</p></div>`:""}
    ${fotosHTML()}
    <div class="b">${sec("O que vamos fazer (mão de obra)")}</div>
-   ${S.serv.length? `<table class="p-tab b"><thead><tr><th>ITEM</th><th>SERVIÇO</th>${temVal?'<th class="v">VALOR</th>':""}</tr></thead><tbody>${S.serv.map((s,i)=>`<tr><td class="n">1.${i+1}</td><td>${esc(s.txt)}</td>${temVal?`<td class="v">${num(s.valor)?brl(num(s.valor)):"—"}</td>`:""}</tr>`).join("")}</tbody></table>` : `<p class="b"><span class="ph">Marque os serviços no passo 4</span></p>`}
+   ${S.serv.length? `<table class="p-tab b"><thead><tr><th>ITEM</th><th>SERVIÇO</th>${temVal?'<th class="v">VALOR</th>':""}</tr></thead><tbody>${S.serv.map((s,i)=>`<tr><td class="n">1.${i+1}</td><td>${esc(s.txt)}</td>${temVal?`<td class="v">${num(s.valor)?brl(num(s.valor)):"—"}</td>`:""}</tr>`).join("")}</tbody></table>` : `${MODO_PDF?"":'<p class="b"><span class="ph">Marque os serviços no passo 4</span></p>'}`}
    ${nos.length||cli.length?`<div class="b">${sec("Materiais")}
     <div class="p-mats">
      ${nos.length?`<div class="nos"><h5>Incluso no valor (nós compramos)</h5><ul>${nos.map(m=>`<li>${esc(m.nome)}</li>`).join("")}</ul><small>Você não precisa comprar estes itens.</small></div>`:""}
@@ -550,14 +594,70 @@ window.addEventListener("resize",fitScale);
 
 function refresh(full=true){ if(full){ renderPicked(); renderMats(); renderCat(); } $("#vTot").textContent=brl(totals().tot); renderPaper(); save(); }
 
+// ---------- base de orçamentos ----------
+const BASE_URL = "https://script.google.com/macros/s/AKfycby3pzUILDeMYgdeD5ETrI4WYrjP99VqDYOIUWft07alrBh5ZC2X3x_SjCkFBwn3pXFH/exec";
+const NO_SITE = /curtoesilva\.com\.br$/.test(location.hostname);
+const baseLigada = () => NO_SITE && BASE_URL.startsWith("https://");
+let COD=""; try{ COD=localStorage.getItem("cs-codigo")||""; }catch(e){}
+async function chamarBase(dados){
+  const r = await fetch(BASE_URL,{method:"POST",body:JSON.stringify({...dados,chave:COD})});
+  const j = await r.json();
+  if(!j.ok) throw new Error(j.erro||"base");
+  return j;
+}
+function mostrarBase(){
+  if(!baseLigada()){ $("#baseStatus").textContent=""; $("#stepBase").querySelector(".hint").textContent="A base de orçamentos funciona no gerador do site: curtoesilva.com.br/orcamento-equipe. Aqui o número é só deste aparelho."; $("#codEquipe").parentElement.hidden=true; return; }
+  $("#codEquipe").value=COD; $("#baseStatus").textContent = COD ? "Conectado" : "";
+}
+$("#codSalvar").addEventListener("click",async()=>{
+  const c=$("#codEquipe").value.trim().toUpperCase(); if(!c){ $("#codEquipe").focus(); return; }
+  const antigo=COD; COD=c; $("#baseStatus").textContent="Conferindo…";
+  try{ await chamarBase({acao:"teste"}); try{ localStorage.setItem("cs-codigo",c); }catch(e){} $("#baseStatus").textContent="Conectado"; toast("Base conectada"); }
+  catch(e){ COD=antigo; $("#baseStatus").textContent=""; toast(e.message==="chave"?"Código errado. Confira com a Maria.":"Sem conexão. Confira a internet e tente de novo.",4000); }
+});
+async function garantirNumero(){
+  if(S.oNum && (S.numBase || !baseLigada())) return true;
+  if(!baseLigada()){
+    let n=1; try{ const k="cs-seq-"+new Date().getFullYear(); n=Number(localStorage.getItem(k)||0)+1; localStorage.setItem(k,String(n)); }catch(e){}
+    S.oNum=new Date().getFullYear()+"-L"+String(n).padStart(3,"0"); $("#oNum").value=S.oNum; save(); return true;
+  }
+  if(!COD){ toast("Coloque o código da equipe no passo 8 antes de baixar.",4500); $("#codEquipe").focus(); return false; }
+  try{
+    const j=await chamarBase({acao:"numero",cliente:S.cNome.trim(),quem:(SIG&&SIG.nome)||"Equipe"});
+    S.oNum=j.num; S.numBase=true; $("#oNum").value=S.oNum; save(); renderPaper(); return true;
+  }catch(e){
+    toast(e.message==="chave"?"Código da equipe errado (passo 8).":"Sem conexão com a base. Confira a internet e tente de novo.",4500); return false;
+  }
+}
+function faltando(){
+  const f=[];
+  if(!S.cEnd.trim()) f.push("endereço");
+  if(!S.serv.length) f.push("serviços");
+  if(!totals().tot) f.push("valor");
+  const semLeg=FOTOS.map((x,i)=>x.cap.trim()?0:i+1).filter(Boolean);
+  if(semLeg.length) f.push((semLeg.length===1?"legenda da foto ":"legendas das fotos ")+semLeg.join(", ").replace(/, (\d+)$/," e $1"));
+  return f;
+}
+const blobB64 = blob => new Promise((res,rej)=>{ const r=new FileReader(); r.onload=()=>res(String(r.result).split(",")[1]); r.onerror=rej; r.readAsDataURL(blob); });
+
 // ---------- PDF ----------
-let downloads=null;
+let downloads=null, avisoArm=false, avisoT;
 async function gerarPDF(btn){
   if(!S.cNome.trim()){ toast("Coloque o nome do cliente antes"); setTab("montar"); $("#cNome").focus(); return; }
+  const f=faltando();
+  if(f.length && !avisoArm){
+    avisoArm=true; clearTimeout(avisoT); avisoT=setTimeout(()=>{avisoArm=false;},9000);
+    toast("Falta: "+f.join(", ")+". Toque de novo em Baixar PDF para gerar assim mesmo.",9000); return;
+  }
+  avisoArm=false;
   const bs=[$("#bPdf"),$("#bPdf2")]; bs.forEach(b=>{b.disabled=true}); const old=btn.textContent; btn.textContent="Gerando…";
+  if(!(await garantirNumero())){ bs.forEach(b=>{b.disabled=false}); btn.textContent=old; return; }
   const P=1123, FOOTH=70, TOP=36;
   const host=document.createElement("div"); host.style.cssText="position:fixed;left:-10000px;top:0;width:794px;";
-  const pp=document.createElement("div"); pp.className="paper"; pp.style.boxShadow="none"; pp.innerHTML=paperHTML(); host.appendChild(pp); document.body.appendChild(host);
+  const pp=document.createElement("div"); pp.className="paper"; pp.style.boxShadow="none";
+  MODO_PDF=true; try{ pp.innerHTML=paperHTML(); } finally { MODO_PDF=false; }
+  host.appendChild(pp); document.body.appendChild(host);
+  let blob=null, nome="";
   try{
     // empurra para a próxima página o bloco que ficaria cortado
     const blocks=[...pp.querySelectorAll(".b")];
@@ -578,15 +678,23 @@ async function gerarPDF(btn){
       if(k) pdf.addPage(); pdf.addImage(c.toDataURL("image/jpeg",0.92),"JPEG",0,0,210,297);
     }
     pdf.setProperties({title:"Orçamento Curto e Silva "+S.oNum});
-    const blob=pdf.output("blob");
-    const nome=("Orcamento "+S.oNum+" - "+S.cNome.trim()).normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^\w\- ]+/g,"").trim()+".pdf";
+    blob=pdf.output("blob");
+    nome=("Orcamento "+S.oNum+" - "+S.cNome.trim()).normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^\w\- ]+/g,"").trim()+".pdf";
     if(downloads) await downloads.save({filename:nome,data:blob}); else pdf.save(nome);
-    toast("PDF salvo");
+    toast("PDF salvo"); guardarHist();
   }catch(e){
     if(e&&e.code==="declined") toast("Download cancelado");
     else if(e&&e.code==="rate_limited") toast("Já tem um download aberto. Tente de novo em instantes.");
     else toast("Não consegui gerar o PDF. Tente de novo.");
   }finally{ host.remove(); bs.forEach(b=>{b.disabled=false}); btn.textContent=old; }
+  // guarda na base (o PDF já está com a pessoa; se falhar, baixar de novo atualiza)
+  if(blob && baseLigada() && S.numBase){
+    try{
+      await chamarBase({acao:"salvar",num:S.oNum,cliente:S.cNome.trim(),tel:S.cTel,endereco:S.cEnd,
+        servicos:S.serv.map(x=>x.txt).join("; "),total:totals().tot,quem:(SIG&&SIG.nome)||"Equipe",arquivo:nome,pdf:await blobB64(blob)});
+      toast("PDF salvo e guardado na base ("+S.oNum+")",3500);
+    }catch(e){ toast("O PDF foi baixado, mas não entrou na base. Com internet, toque em Baixar PDF de novo.",6000); }
+  }
 }
 $("#bPdf").addEventListener("click",e=>gerarPDF(e.currentTarget));
 $("#bPdf2").addEventListener("click",e=>gerarPDF(e.currentTarget));
@@ -595,7 +703,7 @@ $("#bPdf2").addEventListener("click",e=>gerarPDF(e.currentTarget));
 $("#bZap").addEventListener("click",async()=>{
   const t=totals(); const nos=S.mats.filter(m=>m.quem==="nosso"), cli=S.mats.filter(m=>m.quem==="cliente");
   const h=new Date().getHours(); const oi=h<12?"Bom dia":h<18?"Boa tarde":"Boa noite"; const pn=(S.cNome||"").trim().split(/\s+/)[0];
-  let s=`${oi}${pn?", "+pn:""}! Segue o orçamento da Curto e Silva:\n\n*Serviços*\n`+S.serv.map((x,i)=>`1.${i+1} ${x.txt}`).join("\n");
+  let s=`${oi}${pn?", "+pn:""}! Segue o orçamento${S.oNum?" nº "+S.oNum:""} da Curto e Silva:\n\n*Serviços*\n`+S.serv.map((x,i)=>`1.${i+1} ${x.txt}`).join("\n");
   if(nos.length) s+=`\n\n*Material incluso (nós compramos)*\n`+nos.map(m=>"✓ "+m.nome).join("\n");
   if(cli.length) s+=`\n\n*Material por conta do cliente*\n`+cli.map(m=>"• "+m.nome).join("\n");
   s+=`\n\n*Valor total:* ${brl(t.tot)}\n*Pagamento:* ${S.cPag}\n*Prazo:* ${S.cPrazo}\n*Validade:* até ${fmtD(S.cVal)}\n\nPIX (CNPJ): 30.569.236/0001-04${FOTOS.length?"\n\nNo PDF vão as fotos da visita.":""}\n\nO PDF completo vai em anexo. Qualquer dúvida, é só chamar!`;
@@ -603,18 +711,50 @@ $("#bZap").addEventListener("click",async()=>{
   catch(e){ const ta=document.createElement("textarea"); ta.value=s; ta.style.cssText="position:fixed;left:16px;right:16px;bottom:80px;height:40vh;z-index:30"; document.body.appendChild(ta); ta.select(); toast("Selecione e copie o texto"); ta.addEventListener("blur",()=>ta.remove()); }
 });
 
-// ---------- novo ----------
-let novoArm=false;
-$("#bNovo").addEventListener("click",e=>{
-  if(!novoArm){ novoArm=true; e.currentTarget.textContent="Apagar tudo?"; setTimeout(()=>{novoArm=false; $("#bNovo").textContent="Novo";},3000); return; }
-  S=DEF(); moAuto=true; FIELDS.forEach(id=>$("#"+id).value=S[id]||""); $("#vSep").checked=false; $("#sigUsar").checked=true; FOTOS=[]; renderFotos(); salvarFotos(); novoArm=false; e.currentTarget.textContent="Novo"; refresh(); toast("Orçamento novo");
+// ---------- início / histórico ----------
+const HKEY="cs-historico";
+const lerHist=()=>{ try{ return JSON.parse(localStorage.getItem(HKEY)||"[]"); }catch(e){ return []; } };
+function guardarHist(){
+  if(!S.oNum) return;
+  const h=lerHist().filter(x=>x.num!==S.oNum);
+  h.unshift({num:S.oNum,cliente:S.cNome.trim(),total:totals().tot,data:new Date().toISOString(),S:JSON.parse(JSON.stringify(S))});
+  try{ localStorage.setItem(HKEY,JSON.stringify(h.slice(0,30))); }catch(e){}
+}
+const temRascunho=()=>!!(S.cNome.trim()||S.serv.length||FOTOS.length||S.oDiag.trim());
+function renderHome(){
+  $("#hCont").innerHTML = temRascunho() ? `<button class="cont" id="hContBtn" type="button"><span class="t"><b>Continuar ${S.cNome.trim()?esc(S.cNome.trim()):"o orçamento em andamento"}</b><small>${S.oNum?"Nº "+esc(S.oNum)+" · ":"Ainda sem PDF · "}${S.serv.length} serviço${S.serv.length===1?"":"s"}${FOTOS.length?" · "+FOTOS.length+" foto"+(FOTOS.length===1?"":"s"):""}</small></span><span class="seta">›</span></button>` : "";
+  const h=lerHist();
+  $("#hHist").innerHTML = h.length ? `<h3>Últimos orçamentos deste celular</h3><div class="hist">${h.map((x,i)=>`<button class="hi" type="button" data-h="${i}"><span class="num">${esc(x.num)}</span><span class="cli">${esc(x.cliente||"Sem nome")}<small>${new Date(x.data).toLocaleDateString("pt-BR")}</small></span><span class="val">${x.total?brl(x.total):""}</span></button>`).join("")}</div>` : "";
+}
+function irInicio(){ document.body.dataset.view="home"; renderHome(); window.scrollTo(0,0); }
+function irForm(){ document.body.dataset.view="form"; setTab("montar"); requestAnimationFrame(fitScale); }
+function carregar(novoS, fotos){
+  S=Object.assign(DEF(),novoS); moAuto=!S.vMo; avisoArm=false;
+  FIELDS.forEach(id=>$("#"+id).value=S[id]||""); $("#vSep").checked=!!S.vSep; $("#sigUsar").checked=S.sigUsar!==false;
+  FOTOS=fotos; renderFotos(); salvarFotos(); refresh();
+}
+let novoArm=false, novoT;
+$("#hNovo").addEventListener("click",e=>{
+  if(temRascunho() && !S.oNum && !novoArm){
+    novoArm=true; clearTimeout(novoT); novoT=setTimeout(()=>{novoArm=false;},6000);
+    toast("O orçamento de "+(S.cNome.trim()||"agora")+" ainda não virou PDF. Toque de novo para começar outro mesmo assim.",6000); return;
+  }
+  novoArm=false; carregar({},[]); irForm(); setTimeout(()=>$("#cNome").focus(),50);
 });
+$("#hCont").addEventListener("click",e=>{ if(e.target.closest("#hContBtn")) irForm(); });
+$("#hHist").addEventListener("click",e=>{
+  const b=e.target.closest("[data-h]"); if(!b) return;
+  const x=lerHist()[+b.dataset.h]; if(!x) return;
+  if(x.num===S.oNum){ irForm(); return; }
+  carregar(x.S,[]); irForm(); toast("Orçamento "+x.num+" aberto. As fotos ficam no PDF guardado na base.",4500);
+});
+$("#bInicio").addEventListener("click",irInicio);
 
 // ---------- abas (celular) ----------
 function setTab(t){ document.body.dataset.tab=t; $("#tMontar").setAttribute("aria-selected",t==="montar"); $("#tVer").setAttribute("aria-selected",t==="ver"); if(t==="ver") requestAnimationFrame(fitScale); window.scrollTo(0,0); }
 $("#tMontar").addEventListener("click",()=>setTab("montar")); $("#tVer").addEventListener("click",()=>setTab("ver"));
 
-let tt; function toast(m){ const el=$("#toast"); el.textContent=m; el.hidden=false; clearTimeout(tt); tt=setTimeout(()=>el.hidden=true,2600); }
+let tt; function toast(m,ms=2600){ const el=$("#toast"); el.textContent=m; el.hidden=false; clearTimeout(tt); tt=setTimeout(()=>el.hidden=true,ms); }
 
 // ---------- fotos ----------
 let FOTOS=[];
@@ -675,9 +815,10 @@ if(SIG) $("#sigStatus").textContent="Assinatura salva";
 desenharSalva();
 
 // ---------- início ----------
-document.body.dataset.tab="montar";
-bindFields(); $("#sigUsar").checked=S.sigUsar!==false; moAuto=!S.vMo; renderChips(); renderFotos(); refresh();
-IDB.get("fotos").then(v=>{ if(Array.isArray(v)&&v.length){ FOTOS=v; renderFotos(); renderPaper(); } }).catch(()=>{});
+document.body.dataset.tab="montar"; document.body.dataset.view="home";
+bindFields(); mostrarBase(); $("#sigUsar").checked=S.sigUsar!==false; moAuto=!S.vMo; renderChips(); renderFotos(); refresh();
+renderHome();
+IDB.get("fotos").then(v=>{ if(Array.isArray(v)&&v.length){ FOTOS=v; renderFotos(); renderPaper(); renderHome(); } }).catch(()=>{});
 document.fonts && document.fonts.ready.then(fitScale);
 (async()=>{
   try{ if(window.claude?.use){ downloads=await window.claude.use("downloads"); } }catch(e){}
