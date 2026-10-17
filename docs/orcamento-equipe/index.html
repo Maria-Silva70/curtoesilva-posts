@@ -179,6 +179,23 @@ body:not([data-view="home"]) .home{display:none}
 .hi .cli{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .hi .cli small{display:block;color:var(--muted);font-size:12px}
 .hi .val{font-weight:700;font-variant-numeric:tabular-nums}
+body[data-view="home"] #bNovoTop{display:none}
+.busca{display:flex;flex-direction:column;gap:10px}
+.busca .row input{flex:1;min-width:0}
+.res{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.ri{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.ri:last-child{border-bottom:0}
+.ri .l1{display:flex;gap:10px;align-items:baseline;min-width:0}
+.ri .num{font-family:var(--display);font-weight:800;color:var(--accent);font-size:17px}
+.ri .cli{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ri .val{font-weight:700;font-variant-numeric:tabular-nums;text-align:right}
+.ri .l2{color:var(--muted);font-size:12.5px;grid-column:1/-1;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
+.pill{font-size:11px;font-weight:700;border-radius:999px;padding:2px 8px;background:var(--sunk);color:var(--fg)}
+.pill.Aprovado{background:var(--ok-soft);color:var(--ok)}
+.pill.Recusado{background:var(--accent-soft);color:var(--accent-ink)}
+.ri .acoes{grid-column:1/-1;display:flex;gap:8px;margin-top:4px}
+.ri .acoes .btn{padding:6px 12px;font-size:13px}
+.vazio{color:var(--muted);font-size:14px;padding:6px 2px}
 .vh{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;pointer-events:none}
 .ph-btns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .ph-btns label.btn{cursor:pointer}
@@ -210,6 +227,7 @@ body:not([data-view="home"]) .home{display:none}
   .top .hide-s{display:none}
 }
 @media (max-width:520px){.grid2{grid-template-columns:1fr}.pk{grid-template-columns:24px minmax(0,1fr) 84px 28px}.mt{grid-template-columns:minmax(0,1fr) 32px}.mt .seg{grid-column:1;grid-row:2;justify-self:start}.mt .x{grid-row:1;grid-column:2}}
+@media (max-width:560px){ body:not([data-view="home"]) .top h1{display:none} .top .btn{padding:9px 11px;white-space:nowrap} }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
@@ -219,6 +237,7 @@ body:not([data-view="home"]) .home{display:none}
     <h1>Orçamento<small>Curto e Silva · gerador</small></h1>
     <div class="sp"></div>
     <button class="btn ghost" id="bInicio" type="button">Início</button>
+    <button class="btn ghost" id="bNovoTop" type="button">+ Novo</button>
     <button class="btn pri" id="bPdf" type="button">Baixar PDF</button>
   </div>
   <div class="tabs" role="tablist">
@@ -231,6 +250,11 @@ body:not([data-view="home"]) .home{display:none}
   <div><h2>Orçamentos</h2><p class="sub">Curto e Silva · visita, fotos, valores e PDF assinado</p></div>
   <button class="btn-novo" id="hNovo" type="button"><span>+</span> Novo orçamento</button>
   <div id="hCont"></div>
+  <div class="busca" id="hBusca">
+    <h3>Buscar na base · todos os orçamentos</h3>
+    <form class="row" id="bqForm"><input id="bq" type="search" placeholder="Número, cliente ou endereço" aria-label="Buscar na base"><button class="btn" type="submit">Buscar</button></form>
+    <div id="bqRes"></div>
+  </div>
   <div id="hHist"></div>
 </section>
 
@@ -612,7 +636,7 @@ function mostrarBase(){
 $("#codSalvar").addEventListener("click",async()=>{
   const c=$("#codEquipe").value.trim().toUpperCase(); if(!c){ $("#codEquipe").focus(); return; }
   const antigo=COD; COD=c; $("#baseStatus").textContent="Conferindo…";
-  try{ await chamarBase({acao:"teste"}); try{ localStorage.setItem("cs-codigo",c); }catch(e){} $("#baseStatus").textContent="Conectado"; toast("Base conectada"); }
+  try{ await chamarBase({acao:"teste"}); try{ localStorage.setItem("cs-codigo",c); }catch(e){} $("#baseStatus").textContent="Conectado"; toast("Base conectada"); buscarBase(""); }
   catch(e){ COD=antigo; $("#baseStatus").textContent=""; toast(e.message==="chave"?"Código errado. Confira com a Maria.":"Sem conexão. Confira a internet e tente de novo.",4000); }
 });
 async function garantirNumero(){
@@ -726,7 +750,7 @@ function renderHome(){
   const h=lerHist();
   $("#hHist").innerHTML = h.length ? `<h3>Últimos orçamentos deste celular</h3><div class="hist">${h.map((x,i)=>`<button class="hi" type="button" data-h="${i}"><span class="num">${esc(x.num)}</span><span class="cli">${esc(x.cliente||"Sem nome")}<small>${new Date(x.data).toLocaleDateString("pt-BR")}</small></span><span class="val">${x.total?brl(x.total):""}</span></button>`).join("")}</div>` : "";
 }
-function irInicio(){ document.body.dataset.view="home"; renderHome(); window.scrollTo(0,0); }
+function irInicio(){ document.body.dataset.view="home"; renderHome(); window.scrollTo(0,0); buscarBase(""); }
 function irForm(){ document.body.dataset.view="form"; setTab("montar"); requestAnimationFrame(fitScale); }
 function carregar(novoS, fotos){
   S=Object.assign(DEF(),novoS); moAuto=!S.vMo; avisoArm=false;
@@ -734,12 +758,45 @@ function carregar(novoS, fotos){
   FOTOS=fotos; renderFotos(); salvarFotos(); refresh();
 }
 let novoArm=false, novoT;
-$("#hNovo").addEventListener("click",e=>{
+function novoOrc(){
   if(temRascunho() && !S.oNum && !novoArm){
     novoArm=true; clearTimeout(novoT); novoT=setTimeout(()=>{novoArm=false;},6000);
     toast("O orçamento de "+(S.cNome.trim()||"agora")+" ainda não virou PDF. Toque de novo para começar outro mesmo assim.",6000); return;
   }
-  novoArm=false; carregar({},[]); irForm(); setTimeout(()=>$("#cNome").focus(),50);
+  novoArm=false; carregar({},[]); irForm(); window.scrollTo(0,0); setTimeout(()=>$("#cNome").focus(),50); toast("Orçamento novo");
+}
+$("#hNovo").addEventListener("click",novoOrc);
+$("#bNovoTop").addEventListener("click",novoOrc);
+
+// ---------- busca na base ----------
+async function buscarBase(q){
+  const box=$("#bqRes");
+  if(!baseLigada()){ $("#hBusca").hidden=true; return; }
+  $("#hBusca").hidden=false;
+  if(!COD){ box.innerHTML='<p class="vazio">Coloque o código da equipe no passo 8 (abra um orçamento) para ver a base.</p>'; return; }
+  box.innerHTML='<p class="vazio">Buscando…</p>';
+  try{
+    const j=await chamarBase({acao:"buscar",q:q||""});
+    if(!j.itens.length){ box.innerHTML=`<p class="vazio">${q?"Nada encontrado para “"+esc(q)+"”.":"Nenhum orçamento na base ainda."}</p>`; return; }
+    box.innerHTML=(q?"":`<p class="vazio">Os mais recentes (${j.total} na base)</p>`)+`<div class="res">${j.itens.map(x=>`<div class="ri">
+      <div class="l1"><span class="num">${esc(x.num)}</span><span class="cli">${esc(x.cliente||"Sem nome")}</span></div>
+      <span class="val">${x.total?esc(x.total):""}</span>
+      <div class="l2"><span class="pill ${esc(x.situacao)}">${esc(x.situacao||"—")}</span><span>${esc((x.data||"").slice(0,10))}</span>${x.quem?`<span>por ${esc(x.quem)}</span>`:""}${x.endereco?`<span>${esc(x.endereco)}</span>`:""}</div>
+      ${x.pdf?`<div class="acoes"><button class="btn" type="button" data-pdf="${esc(x.pdf)}" data-num="${esc(x.num)}">Abrir PDF</button></div>`:""}
+    </div>`).join("")}</div>`;
+  }catch(e){ box.innerHTML='<p class="vazio">'+(e.message==="chave"?"Código da equipe errado (passo 8).":"Sem conexão com a base agora. Tente de novo.")+'</p>'; }
+}
+$("#bqForm").addEventListener("submit",e=>{ e.preventDefault(); buscarBase($("#bq").value.trim()); });
+$("#bqRes").addEventListener("click",async e=>{
+  const b=e.target.closest("[data-pdf]"); if(!b) return;
+  const old=b.textContent; b.disabled=true; b.textContent="Abrindo…";
+  try{
+    const j=await chamarBase({acao:"pdf",id:b.dataset.pdf});
+    const bytes=Uint8Array.from(atob(j.b64),c=>c.charCodeAt(0)); const blob=new Blob([bytes],{type:"application/pdf"});
+    if(downloads) await downloads.save({filename:j.nome,data:blob});
+    else { const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=j.nome; document.body.appendChild(a); a.click(); setTimeout(()=>{URL.revokeObjectURL(a.href); a.remove();},4000); }
+  }catch(err){ toast("Não consegui abrir o PDF agora. Tente de novo.",4000); }
+  finally{ b.disabled=false; b.textContent=old; }
 });
 $("#hCont").addEventListener("click",e=>{ if(e.target.closest("#hContBtn")) irForm(); });
 $("#hHist").addEventListener("click",e=>{
@@ -817,7 +874,7 @@ desenharSalva();
 // ---------- início ----------
 document.body.dataset.tab="montar"; document.body.dataset.view="home";
 bindFields(); mostrarBase(); $("#sigUsar").checked=S.sigUsar!==false; moAuto=!S.vMo; renderChips(); renderFotos(); refresh();
-renderHome();
+renderHome(); buscarBase("");
 IDB.get("fotos").then(v=>{ if(Array.isArray(v)&&v.length){ FOTOS=v; renderFotos(); renderPaper(); renderHome(); } }).catch(()=>{});
 document.fonts && document.fonts.ready.then(fitScale);
 (async()=>{
