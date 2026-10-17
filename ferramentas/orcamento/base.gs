@@ -56,7 +56,7 @@ function doPost(e) {
   if (d.acao === 'pdf') {
     const f = DriveApp.getFileById(String(d.id || ''));
     const dentro = f.getParents().hasNext() && f.getParents().next().getId() === p.getProperty('PASTA');
-    if (!dentro) return responder({ ok: false, erro: 'arquivo' });
+    if (!dentro || f.getMimeType() !== 'application/pdf') return responder({ ok: false, erro: 'arquivo' });
     return responder({ ok: true, nome: f.getName(), b64: Utilities.base64Encode(f.getBlob().getBytes()) });
   }
 
