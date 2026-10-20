@@ -2,7 +2,7 @@
 // Recebe os orçamentos do gerador (curtoesilva.com.br/orcamento-equipe),
 // dá um número que nunca se repete, guarda na planilha e o PDF no Drive.
 
-const CHAVE = 'CS-SN5F66'; // código da equipe (o mesmo digitado no gerador)
+const CHAVE = 'COLOQUE_AQUI_O_CODIGO_DA_EQUIPE'; // o código real fica só no Apps Script, nunca no GitHub
 const COLS = ['Nº','Criado em','Atualizado em','Cliente','Telefone','Endereço','Serviços','Total (R$)','Situação','PDF','Feito por','Versões'];
 
 function configurar() {
