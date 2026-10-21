@@ -85,8 +85,12 @@ canvas{position:absolute;inset:0}
   <circle id="shock" r="10" fill="none" stroke="#FFB07A" stroke-width="6" opacity="0"/>
   <g id="hat" filter="url(#hgl)"><path d="M-130,10 C-130,-110 -60,-150 0,-150 C60,-150 130,-110 130,10 Z" fill="url(#hg)"/>
    <rect x="-170" y="0" width="340" height="34" rx="17" fill="#E85C12"/><rect x="-170" y="0" width="340" height="10" rx="5" fill="#FFB07A" opacity=".6"/>
-   <path d="M-22,-150 h44 v150 h-44 Z" fill="#FF9A5A" opacity=".8"/>
-   <path d="M-90,-90 C-80,-120 -50,-136 -20,-140" stroke="#fff" stroke-width="12" stroke-linecap="round" fill="none" opacity=".7"/></g>
+   <path d="M-14,-150 h28 v26 h-28 Z" fill="#FF9A5A" opacity=".8"/>
+   <clipPath id="lc"><circle cx="0" cy="-62" r="56"/></clipPath>
+   <circle cx="0" cy="-62" r="62" fill="#1E1A17"/><circle cx="0" cy="-62" r="60" fill="none" stroke="#FFD2B0" stroke-width="3"/>
+   <image href="logo.png" x="-56" y="-118" width="112" height="112" clip-path="url(#lc)"/>
+   <path d="M-90,-90 C-80,-120 -50,-136 -20,-140" stroke="#fff" stroke-width="12" stroke-linecap="round" fill="none" opacity=".7"/>
+   <ellipse cx="-22" cy="-92" rx="26" ry="12" fill="#fff" opacity=".18" transform="rotate(-25 -22 -92)"/></g>
  </svg>
 </div>
 <canvas id="rainF" width="1080" height="1920"></canvas>
@@ -155,7 +159,7 @@ window.render=function(t){
  const hf=seg(t,11.0,11.7);let hy=lerp(-400,830,eio(hf));if(t>11.7)hy=830+Math.sin(seg(t,11.7,12.2)*Math.PI)*-30;
  const hO=seg(t,10.95,11.05)*(1-seg(t,16.2,16.6));
  $('hatS').style.opacity=hO;
- $('hat').setAttribute('transform','translate(540,'+hy+') scale('+(t>11.7?1+0.08*Math.sin(seg(t,11.7,12.0)*Math.PI):1)+')');
+ $('hat').setAttribute('transform','translate(540,'+hy+') scale('+(1.15*(t>11.7?1+0.08*Math.sin(seg(t,11.7,12.0)*Math.PI):1))+')');
  $('tr').setAttribute('transform','translate(540,'+(hy-20)+')');$('tr').style.opacity=(1-seg(t,11.7,12.0))*hf;
  const sh=seg(t,11.7,12.4);$('shock').setAttribute('cx',540);$('shock').setAttribute('cy',850);$('shock').setAttribute('r',20+500*eo(sh));$('shock').style.opacity=(sh>0&&sh<1)?1-sh:0;
  const bm=seg(t,12.2,13.3);$('beamP').setAttribute('transform','translate(540,'+(hy+10)+') rotate('+lerp(-35,35,eio(bm))+')');$('beamP').style.opacity=(bm>0&&bm<1)?0.9:0;
