@@ -830,29 +830,42 @@ const IDB={
   async get(k){ const db=await this.open(); return new Promise((res,rej)=>{ const r=db.transaction("kv").objectStore("kv").get(k); r.onsuccess=()=>res(r.result); r.onerror=()=>rej(r.error); }); }
 };
 let ftT; function salvarFotos(){ clearTimeout(ftT); ftT=setTimeout(()=>{ IDB.set("fotos",FOTOS).catch(()=>toast("As fotos estão na tela, mas o celular está sem espaço para guardá-las. Gere o PDF antes de fechar a página.",8000)); },400); }
-function ehHeic(f){ return /hei[cf]/i.test(f.type||"")||/\.hei[cf]$/i.test(f.name||""); }
+async function cabecalho(f){ try{ const b=new Uint8Array(await f.slice(0,16).arrayBuffer()); return String.fromCharCode(...b); }catch(e){ return ""; } }
+async function ehHeic(f){ if(/hei[cf]/i.test(f.type||"")||/\.hei[cf]$/i.test(f.name||"")) return true; const h=await cabecalho(f); return /ftyp(heic|heix|hevc|hevx|heim|heis|mif1|msf1)/.test(h); }
+let HEIC_LIB=null;
+function carregarHeic(){ if(window.heic2any) return Promise.resolve(); if(HEIC_LIB) return HEIC_LIB;
+  HEIC_LIB=new Promise((res,rej)=>{ const sc=document.createElement("script"); sc.src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"; sc.onload=()=>res(); sc.onerror=()=>{ HEIC_LIB=null; rej(new Error("heic-lib")); }; document.head.appendChild(sc); });
+  return HEIC_LIB; }
 function desenhar(fonte,w,h,M){ const k=Math.min(1,M/Math.max(w,h)); const c=document.createElement("canvas"); c.width=Math.max(1,Math.round(w*k)); c.height=Math.max(1,Math.round(h*k));
   const g=c.getContext("2d"); g.fillStyle="#fff"; g.fillRect(0,0,c.width,c.height); g.drawImage(fonte,0,0,c.width,c.height); const d=c.toDataURL("image/jpeg",0.82); c.width=c.height=0; if(!d||d.length<200) throw new Error("canvas"); return d; }
 function viaImg(file,M){ return new Promise((res,rej)=>{ const url=URL.createObjectURL(file); const img=new Image();
   img.onload=()=>{ try{ res(desenhar(img,img.naturalWidth,img.naturalHeight,M)); }catch(e){ rej(e); } finally{ URL.revokeObjectURL(url); } };
   img.onerror=()=>{ URL.revokeObjectURL(url); rej(new Error("abrir")); }; img.src=url; }); }
+function lerDireto(file){ return new Promise((res,rej)=>{ const r=new FileReader(); r.onload=()=>res(r.result); r.onerror=()=>rej(new Error("abrir")); r.readAsDataURL(file); }); }
 async function reduzir(file){
-  if(ehHeic(file)) throw new Error("heic");
+  if(!file.size) throw new Error("nuvem");
+  if(await ehHeic(file)){
+    try{ await carregarHeic(); let out=await window.heic2any({blob:file,toType:"image/jpeg",quality:0.85}); if(Array.isArray(out)) out=out[0]; file=out; }
+    catch(e){ throw new Error("heic"); }
+  }
   for(const M of [1280,960,720]){
     try{ if(window.createImageBitmap){ const bm=await createImageBitmap(file,{imageOrientation:"from-image"}); try{ return desenhar(bm,bm.width,bm.height,M); } finally{ bm.close&&bm.close(); } } }catch(e){}
-    try{ return await viaImg(file,M); }catch(e){ if(e.message==="abrir" && M===720) throw e; }
+    try{ return await viaImg(file,M); }catch(e){}
   }
+  const h=await cabecalho(file);
+  if(file.size<9e6 && (h.charCodeAt(0)===0xFF&&h.charCodeAt(1)===0xD8 || h.startsWith("\x89PNG") || h.slice(8,12)==="WEBP")) return await lerDireto(file);
   throw new Error("abrir");
 }
 async function addFotos(files){
-  let erro=0, heic=0, i=0;
-  for(const f of files){ i++; if(files.length>1) toast("Preparando foto "+i+" de "+files.length+"…",8000);
+  let erro=0, heic=0, nuvem=0, i=0;
+  for(const f of files){ i++; toast((files.length>1?"Preparando foto "+i+" de "+files.length:"Preparando a foto")+"…",15000);
     try{ FOTOS.push({id:"f"+Date.now()+Math.random().toString(36).slice(2,6),src:await reduzir(f),cap:""}); renderFotos(); }
-    catch(e){ if(e.message==="heic") heic++; else erro++; } }
+    catch(e){ if(e.message==="heic") heic++; else if(e.message==="nuvem") nuvem++; else erro++; } }
   try{ localStorage.removeItem("cs-camera"); }catch(e){}
   renderFotos(); renderPaper(); salvarFotos();
-  if(heic) toast("Esta foto está em formato HEIC, que o navegador não abre. Na câmera do celular, mude o formato para JPG, ou mande a foto pela galeria do WhatsApp e tente de novo.",9000);
-  else if(erro) toast(erro===1?"Não consegui abrir uma das fotos. Tente pela opção Escolher da galeria.":"Não consegui abrir "+erro+" fotos. Tente pela opção Escolher da galeria.",6000);
+  if(nuvem) toast("Essa foto está só na nuvem (Google Fotos). Abra a foto no Google Fotos, toque em Baixar e tente de novo.",9000);
+  else if(heic) toast("Não consegui converter a foto HEIC (precisa de internet). Confira a internet e tente de novo, ou mude a câmera do celular para salvar em JPG.",9000);
+  else if(erro) toast(erro===1?"Não consegui abrir uma das fotos. Tente tirar a foto de novo ou escolher outra.":"Não consegui abrir "+erro+" fotos. Tente tirar de novo ou escolher outras.",6000);
   else if(files.length) toast(files.length===1?"Foto adicionada":files.length+" fotos adicionadas");
 }
 // Se o celular fechar a página ao abrir a câmera, avisa na volta
