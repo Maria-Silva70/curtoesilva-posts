@@ -184,6 +184,7 @@ body:not([data-view="home"]) .home{display:none}
 .hi .cli{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .hi .cli small{display:block;color:var(--muted);font-size:12px}
 .hi .val{font-weight:700;font-variant-numeric:tabular-nums}
+.iab{grid-column:1/-1;background:#FFF3CD;color:#5c4400;border:1px solid #E8C35A;border-radius:10px;padding:10px 14px;font-size:14px;margin:8px 0}
 body[data-view="home"] #bNovoTop{display:none}
 .busca{display:flex;flex-direction:column;gap:10px}
 .busca .row input{flex:1;min-width:0}
@@ -828,25 +829,37 @@ const IDB={
   async set(k,v){ const db=await this.open(); return new Promise((res,rej)=>{ const tx=db.transaction("kv","readwrite"); tx.objectStore("kv").put(v,k); tx.oncomplete=()=>res(); tx.onerror=()=>rej(tx.error); }); },
   async get(k){ const db=await this.open(); return new Promise((res,rej)=>{ const r=db.transaction("kv").objectStore("kv").get(k); r.onsuccess=()=>res(r.result); r.onerror=()=>rej(r.error); }); }
 };
-let ftT; function salvarFotos(){ clearTimeout(ftT); ftT=setTimeout(()=>{ IDB.set("fotos",FOTOS).catch(()=>{}); },400); }
-function reduzir(file){
-  return new Promise((res,rej)=>{
-    const url=URL.createObjectURL(file); const img=new Image();
-    img.onload=()=>{ const M=1280; const k=Math.min(1,M/Math.max(img.naturalWidth,img.naturalHeight));
-      const c=document.createElement("canvas"); c.width=Math.round(img.naturalWidth*k); c.height=Math.round(img.naturalHeight*k);
-      const g=c.getContext("2d"); g.fillStyle="#fff"; g.fillRect(0,0,c.width,c.height); g.drawImage(img,0,0,c.width,c.height);
-      URL.revokeObjectURL(url); res(c.toDataURL("image/jpeg",0.82)); };
-    img.onerror=()=>{ URL.revokeObjectURL(url); rej(new Error("foto")); };
-    img.src=url;
-  });
+let ftT; function salvarFotos(){ clearTimeout(ftT); ftT=setTimeout(()=>{ IDB.set("fotos",FOTOS).catch(()=>toast("As fotos estão na tela, mas o celular está sem espaço para guardá-las. Gere o PDF antes de fechar a página.",8000)); },400); }
+function ehHeic(f){ return /hei[cf]/i.test(f.type||"")||/\.hei[cf]$/i.test(f.name||""); }
+function desenhar(fonte,w,h,M){ const k=Math.min(1,M/Math.max(w,h)); const c=document.createElement("canvas"); c.width=Math.max(1,Math.round(w*k)); c.height=Math.max(1,Math.round(h*k));
+  const g=c.getContext("2d"); g.fillStyle="#fff"; g.fillRect(0,0,c.width,c.height); g.drawImage(fonte,0,0,c.width,c.height); const d=c.toDataURL("image/jpeg",0.82); c.width=c.height=0; if(!d||d.length<200) throw new Error("canvas"); return d; }
+function viaImg(file,M){ return new Promise((res,rej)=>{ const url=URL.createObjectURL(file); const img=new Image();
+  img.onload=()=>{ try{ res(desenhar(img,img.naturalWidth,img.naturalHeight,M)); }catch(e){ rej(e); } finally{ URL.revokeObjectURL(url); } };
+  img.onerror=()=>{ URL.revokeObjectURL(url); rej(new Error("abrir")); }; img.src=url; }); }
+async function reduzir(file){
+  if(ehHeic(file)) throw new Error("heic");
+  for(const M of [1280,960,720]){
+    try{ if(window.createImageBitmap){ const bm=await createImageBitmap(file,{imageOrientation:"from-image"}); try{ return desenhar(bm,bm.width,bm.height,M); } finally{ bm.close&&bm.close(); } } }catch(e){}
+    try{ return await viaImg(file,M); }catch(e){ if(e.message==="abrir" && M===720) throw e; }
+  }
+  throw new Error("abrir");
 }
 async function addFotos(files){
-  let erro=0;
-  for(const f of files){ try{ FOTOS.push({id:"f"+Date.now()+Math.random().toString(36).slice(2,6),src:await reduzir(f),cap:""}); }catch(e){ erro++; } }
+  let erro=0, heic=0, i=0;
+  for(const f of files){ i++; if(files.length>1) toast("Preparando foto "+i+" de "+files.length+"…",8000);
+    try{ FOTOS.push({id:"f"+Date.now()+Math.random().toString(36).slice(2,6),src:await reduzir(f),cap:""}); renderFotos(); }
+    catch(e){ if(e.message==="heic") heic++; else erro++; } }
+  try{ localStorage.removeItem("cs-camera"); }catch(e){}
   renderFotos(); renderPaper(); salvarFotos();
-  if(erro) toast(erro===1?"Não consegui abrir uma das fotos. Tente tirar de novo.":"Não consegui abrir "+erro+" fotos.");
+  if(heic) toast("Esta foto está em formato HEIC, que o navegador não abre. Na câmera do celular, mude o formato para JPG, ou mande a foto pela galeria do WhatsApp e tente de novo.",9000);
+  else if(erro) toast(erro===1?"Não consegui abrir uma das fotos. Tente pela opção Escolher da galeria.":"Não consegui abrir "+erro+" fotos. Tente pela opção Escolher da galeria.",6000);
   else if(files.length) toast(files.length===1?"Foto adicionada":files.length+" fotos adicionadas");
 }
+// Se o celular fechar a página ao abrir a câmera, avisa na volta
+document.querySelector('label[for="fotoCam"]').addEventListener("click",()=>{ try{ localStorage.setItem("cs-camera",String(Date.now())); }catch(e){} });
+setTimeout(()=>{ try{ const t=+localStorage.getItem("cs-camera")||0; if(t && Date.now()-t<10*60*1000){ localStorage.removeItem("cs-camera"); toast("O celular fechou a página ao abrir a câmera. Tire a foto pela câmera normal do celular e depois toque em Escolher da galeria.",10000); } else if(t) localStorage.removeItem("cs-camera"); }catch(e){} },1500);
+// Navegador de dentro de aplicativo (Instagram, Facebook, WhatsApp) costuma bloquear fotos
+(function(){ const ua=navigator.userAgent||""; if(/Instagram|FBAN|FBAV|FB_IAB|; wv\)/i.test(ua)){ const b=document.createElement("div"); b.className="iab"; b.innerHTML='Para anexar fotos, abra esta página no <b>Chrome</b>: toque nos três pontinhos e em "Abrir no Chrome" ou "Abrir no navegador".'; const st=document.querySelector("#fotos"); st&&st.parentNode.insertBefore(b,st); } })();
 ["#fotoCam","#fotoGal"].forEach(id=>$(id).addEventListener("change",e=>{ const fs=[...e.target.files]; e.target.value=""; if(fs.length) addFotos(fs); }));
 function renderFotos(){
   $("#fotos").innerHTML = FOTOS.length ? FOTOS.map((f,i)=>`<div class="foto"><img src="${f.src}" alt="Foto ${i+1}"><span class="num">Foto ${i+1}</span>
