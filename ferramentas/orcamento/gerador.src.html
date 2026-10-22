@@ -710,7 +710,8 @@ async function gerarPDF(btn){
       c.getContext("2d").drawImage(canvas,0,k*pxPage,canvas.width,pxPage,0,0,canvas.width,pxPage);
       if(k) pdf.addPage(); pdf.addImage(c.toDataURL("image/jpeg",0.92),"JPEG",0,0,210,297);
     }
-    pdf.setProperties({title:"Orçamento Curto e Silva "+S.oNum});
+    let dados=""; try{ dados=await pacoteDados(); }catch(e){}
+    pdf.setProperties({title:"Orçamento Curto e Silva "+S.oNum, keywords:dados});
     blob=pdf.output("blob");
     nome=("Orcamento "+S.oNum+" - "+S.cNome.trim()).normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^\w\- ]+/g,"").trim()+".pdf";
     if(downloads) await downloads.save({filename:nome,data:blob}); else pdf.save(nome);
@@ -751,7 +752,7 @@ function guardarHist(){
   if(!S.oNum) return;
   const h=lerHist().filter(x=>x.num!==S.oNum);
   h.unshift({num:S.oNum,cliente:S.cNome.trim(),total:totals().tot,data:new Date().toISOString(),S:JSON.parse(JSON.stringify(S))});
-  try{ localStorage.setItem(HKEY,JSON.stringify(h.slice(0,30))); }catch(e){}
+  try{ localStorage.setItem(HKEY,JSON.stringify(h.slice(0,80))); }catch(e){}
 }
 const temRascunho=()=>!!(S.cNome.trim()||S.serv.length||FOTOS.length||S.oDiag.trim());
 function renderHome(){
@@ -777,6 +778,42 @@ function novoOrc(){
 $("#hNovo").addEventListener("click",novoOrc);
 $("#bNovoTop").addEventListener("click",novoOrc);
 
+// ---------- dados do orçamento guardados dentro do PDF ----------
+const b64utf8 = t => { const b=new TextEncoder().encode(t); let s=""; for(let i=0;i<b.length;i+=32768) s+=String.fromCharCode.apply(null,b.subarray(i,i+32768)); return btoa(s); };
+const utf8b64 = b => new TextDecoder().decode(Uint8Array.from(atob(b),c=>c.charCodeAt(0)));
+function fotoMenor(src){ return new Promise(res=>{ const im=new Image(); im.onload=()=>{ try{ res({src:desenhar(im,im.naturalWidth,im.naturalHeight,720)}); }catch(e){ res({src}); } }; im.onerror=()=>res({src}); im.src=src; }); }
+async function pacoteDados(){
+  const fotos=[]; for(const f of FOTOS){ const m=await fotoMenor(f.src); fotos.push({id:f.id,src:m.src,cap:f.cap}); }
+  return "CSDATA1:"+b64utf8(JSON.stringify({S:S,fotos:fotos}));
+}
+function lerDadosPDF(bytes){
+  let t=""; for(let i=0;i<bytes.length;i+=32768) t+=String.fromCharCode.apply(null,bytes.subarray(i,i+32768));
+  const m=t.match(/CSDATA1:([A-Za-z0-9+\/=]+)/); if(!m) return null;
+  try{ return JSON.parse(utf8b64(m[1])); }catch(e){ return null; }
+}
+async function editarDaBase(x,btn){
+  if(temRascunho() && S.oNum!==x.num && !S.oNum && !novoArm){
+    novoArm=true; clearTimeout(novoT); novoT=setTimeout(()=>{novoArm=false;},6000);
+    toast("O orçamento de "+(S.cNome.trim()||"agora")+" ainda não virou PDF. Toque de novo em Editar para abrir o "+x.num+" mesmo assim.",6000); return;
+  }
+  novoArm=false;
+  const old=btn.textContent; btn.disabled=true; btn.textContent="Abrindo…";
+  try{
+    let d=null;
+    if(x.pdf){ const j=await chamarBase({acao:"pdf",id:x.pdf}); d=lerDadosPDF(Uint8Array.from(atob(j.b64),c=>c.charCodeAt(0))); }
+    if(d&&d.S){ d.S.oNum=x.num; d.S.numBase=true; carregar(d.S,(d.fotos||[]).map(f=>({id:f.id||("f"+Date.now()+Math.random().toString(36).slice(2,6)),src:f.src,cap:f.cap||""}))); irForm(); toast("Orçamento "+x.num+" aberto para editar. Ao baixar o PDF de novo, ele é atualizado na base com o mesmo número.",6000); return; }
+    const h=lerHist().find(y=>y.num===x.num);
+    if(h){ const s2=Object.assign({},h.S,{oNum:x.num,numBase:true}); carregar(s2,[]); irForm(); toast("Orçamento "+x.num+" aberto para editar. As fotos não vieram: anexe de novo se precisar.",6000); return; }
+    // orçamento antigo (de antes desta atualização): abre com o que a base tem
+    const s3={cNome:x.cliente||"",cEnd:x.endereco||"",oNum:x.num,numBase:true,
+      serv:String(x.servicos||"").split(/;\s*/).filter(Boolean).map((t,i)=>({from:"livre"+Date.now()+i,txt:t,valor:""}))};
+    carregar(s3,[]); irForm();
+    toast("Esse orçamento é de antes da atualização: vieram cliente, endereço e serviços. Confira valores, materiais e fotos. O número "+x.num+" continua o mesmo.",9000);
+  }catch(err){ toast(err&&err.message==="chave"?"Código da equipe errado (passo 8).":"Não consegui abrir agora. Confira a internet e tente de novo.",4500); }
+  finally{ btn.disabled=false; btn.textContent=old; }
+}
+let BASE_ITENS=[];
+
 // ---------- busca na base ----------
 async function buscarBase(q){
   const box=$("#bqRes");
@@ -787,16 +824,18 @@ async function buscarBase(q){
   try{
     const j=await chamarBase({acao:"buscar",q:q||""});
     if(!j.itens.length){ box.innerHTML=`<p class="vazio">${q?"Nada encontrado para “"+esc(q)+"”.":"Nenhum orçamento na base ainda."}</p>`; return; }
-    box.innerHTML=(q?"":`<p class="vazio">Os mais recentes (${j.total} na base)</p>`)+`<div class="res">${j.itens.map(x=>`<div class="ri">
+    BASE_ITENS=j.itens;
+    box.innerHTML=(q?"":`<p class="vazio">Os mais recentes (${j.total} na base)</p>`)+`<div class="res">${j.itens.map((x,i)=>`<div class="ri">
       <div class="l1"><span class="num">${esc(x.num)}</span><span class="cli">${esc(x.cliente||"Sem nome")}</span></div>
       <span class="val">${x.total?esc(x.total):""}</span>
       <div class="l2"><span class="pill ${esc(x.situacao)}">${esc(x.situacao||"—")}</span><span>${esc((x.data||"").slice(0,10))}</span>${x.quem?`<span>por ${esc(x.quem)}</span>`:""}${x.endereco?`<span>${esc(x.endereco)}</span>`:""}</div>
-      ${x.pdf?`<div class="acoes"><button class="btn" type="button" data-pdf="${esc(x.pdf)}" data-num="${esc(x.num)}">Abrir PDF</button></div>`:""}
+      <div class="acoes"><button class="btn" type="button" data-ed="${i}">Editar</button>${x.pdf?`<button class="btn" type="button" data-pdf="${esc(x.pdf)}" data-num="${esc(x.num)}">Abrir PDF</button>`:""}</div>
     </div>`).join("")}</div>`;
   }catch(e){ box.innerHTML='<p class="vazio">'+(e.message==="chave"?"Código da equipe errado (passo 8).":"Sem conexão com a base agora. Tente de novo.")+'</p>'; }
 }
 $("#bqForm").addEventListener("submit",e=>{ e.preventDefault(); buscarBase($("#bq").value.trim()); });
 $("#bqRes").addEventListener("click",async e=>{
+  const be=e.target.closest("[data-ed]"); if(be){ const x=BASE_ITENS[+be.dataset.ed]; if(x) editarDaBase(x,be); return; }
   const b=e.target.closest("[data-pdf]"); if(!b) return;
   const old=b.textContent; b.disabled=true; b.textContent="Abrindo…";
   try{
