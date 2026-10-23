@@ -1,8 +1,10 @@
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import json, os
-R='/tmp/claude-0/-home-claude/b8f076a5-e108-5da1-8074-85fd5d07d77f/scratchpad/render/'
-F=R+'gf/ofl/barlowcondensed/BarlowCondensed-'; FB=R+'gf/ofl/barlow/Barlow-'
-P='/home/claude/curtoesilva-posts/'
+import os
+D=os.path.dirname(os.path.abspath(__file__))
+R=D+'/'
+F=R+'fontes/BarlowCondensed-'; FB=R+'fontes/Barlow-'
+P=os.path.abspath(D+'/../..')+'/'
 BG=(30,26,24); OR=(232,96,28); WH=(255,255,255); GR=(200,200,200)
 def f(n,s): return ImageFont.truetype(n,s)
 logo=Image.open(R+'logo-curto-e-silva.png').convert('RGBA')
