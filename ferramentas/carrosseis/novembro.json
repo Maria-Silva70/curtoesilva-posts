@@ -1,0 +1,172 @@
+{
+ "nov-tomada-quente": [
+  {
+   "kind": "cover",
+   "tag": "ELÉTRICA · SEGURANÇA",
+   "head": "Tomada quente não é normal.",
+   "sub": "O risco é incêndio, não só a conta de luz."
+  },
+  {
+   "kind": "content",
+   "kicker": "SINAIS DE PERIGO",
+   "head": "Se acontecer isso, é alerta",
+   "bullets": [
+    "Tomada ou plugue quentes ao toque",
+    "Cheiro de queimado",
+    "Marca escura ou faísca",
+    "Disjuntor que desarma sempre"
+   ]
+  },
+  {
+   "kind": "content",
+   "kicker": "POR QUE ACONTECE",
+   "head": "Causas comuns",
+   "bullets": [
+    "Muitos aparelhos no mesmo ponto (benjamim, T)",
+    "Contato frouxo",
+    "Fio velho ou fino demais",
+    "Instalação feita sem projeto"
+   ]
+  },
+  {
+   "kind": "content",
+   "kicker": "O QUE FAZER AGORA",
+   "head": "Primeiro, desligue o disjuntor",
+   "bullets": [
+    "Desligue o disjuntor daquele circuito",
+    "Só depois tire o aparelho da tomada",
+    "Não use até alguém avaliar"
+   ]
+  },
+  {
+   "kind": "content",
+   "kicker": "O QUE NÃO FAZER",
+   "head": "Nada de improviso",
+   "bullets": [
+    "Pôr fita por cima",
+    "Trocar só o espelho",
+    "Usar “só mais um pouquinho”"
+   ]
+  },
+  {
+   "kind": "cta",
+   "head": "Chame quem entende.",
+   "sub": "A Curto e Silva avalia sem custo."
+  }
+ ],
+ "nov-preco-reforma": [
+  {
+   "kind": "cover",
+   "tag": "ORÇAMENTO",
+   "head": "Por que dois orçamentos para a mesma reforma vêm tão diferentes?",
+   "sub": "O mais barato não é o que cabe no orçamento."
+  },
+  {
+   "kind": "content",
+   "kicker": "1 · DIAGNÓSTICO",
+   "head": "Causa ou só o sintoma?",
+   "body": "Pintar por cima da infiltração sai mais barato hoje e mais caro depois."
+  },
+  {
+   "kind": "content",
+   "kicker": "2 · MATERIAL",
+   "head": "Qual, que qualidade e quem compra",
+   "body": "No nosso orçamento, cada material vem marcado: nosso ou do cliente."
+  },
+  {
+   "kind": "content",
+   "kicker": "3 · O QUE ESTÁ POR BAIXO",
+   "head": "Só a visita mostra",
+   "body": "Infiltração antiga, fiação, laje. O que não se vê muda o preço."
+  },
+  {
+   "kind": "content",
+   "kicker": "4 · ACESSO E EQUIPE",
+   "head": "Altura, andaime e equipe",
+   "body": "Equipe própria, sem terceirizar a sua obra."
+  },
+  {
+   "kind": "cta",
+   "head": "Visita e orçamento sem custo.",
+   "sub": "Tudo explicado, item por item."
+  }
+ ],
+ "nov-avaliacoes": [
+  {
+   "kind": "cover",
+   "tag": "GOOGLE · 5,0",
+   "head": "Quem contratou conta.",
+   "sub": "Todas as avaliações com 5 estrelas."
+  },
+  {
+   "kind": "quote",
+   "quote": "Trabalha com agilidade e honestidade!",
+   "name": "Bárbara",
+   "ctx": "Avaliação 5 estrelas no Google"
+  },
+  {
+   "kind": "quote",
+   "quote": "Trabalho de altíssima qualidade, equipe de confiança e cumprimento rigoroso do prazo.",
+   "name": "Anderson",
+   "ctx": "Construção e reforma · Avaliação no Google"
+  },
+  {
+   "kind": "quote",
+   "quote": "São superprofissionais, pontuais e fizeram um ótimo trabalho.",
+   "name": "Liliane",
+   "ctx": "Infiltração e pintura · Avaliação no Google"
+  },
+  {
+   "kind": "quote",
+   "quote": "Atendente muito prestativo, ótimo profissional e executou o serviço com muita competência.",
+   "name": "Desiree",
+   "ctx": "Avaliação 5 estrelas no Google"
+  },
+  {
+   "kind": "cta",
+   "head": "Quer ser o próximo?",
+   "sub": "Orçamento sem custo, com visita."
+  }
+ ],
+ "nov-black-friday": [
+  {
+   "kind": "cover",
+   "tag": "BLACK FRIDAY NA REFORMA",
+   "head": "Desconto em obra? Pergunte isto antes.",
+   "sub": "5 perguntas que valem mais que o desconto."
+  },
+  {
+   "kind": "content",
+   "kicker": "1 · DESCONTO SOBRE QUAL PREÇO?",
+   "head": "Peça o orçamento detalhado",
+   "body": "Item por item, para comparar de verdade."
+  },
+  {
+   "kind": "content",
+   "kicker": "2 · O QUE ESTÁ INCLUSO?",
+   "head": "Material, mão de obra e limpeza",
+   "body": "Tudo por escrito, antes de fechar."
+  },
+  {
+   "kind": "content",
+   "kicker": "3 · QUEM VAI EXECUTAR?",
+   "head": "Equipe própria ou terceirizada?",
+   "body": "Quem aparece na sua casa é quem responde pela obra."
+  },
+  {
+   "kind": "content",
+   "kicker": "4 E 5 · PRAZO E PAGAMENTO",
+   "head": "Combine tudo antes",
+   "bullets": [
+    "Qual é o prazo de entrega?",
+    "Como é o pagamento?",
+    "E se algo der errado? Por escrito."
+   ]
+  },
+  {
+   "kind": "cta",
+   "head": "Pode perguntar para nós também.",
+   "sub": "Orçamento sem custo."
+  }
+ ]
+}
