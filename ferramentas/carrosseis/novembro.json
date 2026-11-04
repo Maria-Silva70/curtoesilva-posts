@@ -169,57 +169,58 @@
    "sub": "Orçamento sem custo."
   }
  ],
- "nov-checkup-telhado": [
+ "nov-vazamento-escondido": [
   {
    "kind": "cover",
-   "tag": "TELHADO · PRÉ-CHUVA",
-   "head": "Checkup do telhado antes da chuva forte.",
-   "sub": "9 itens que você mesmo confere em 10 minutos."
+   "tag": "HIDRÁULICA · ECONOMIA",
+   "head": "Conta de água subiu do nada?",
+   "sub": "Pode ser vazamento escondido. Teste em 10 minutos."
   },
   {
    "kind": "content",
-   "kicker": "POR FORA",
-   "head": "Olhe de baixo, sem subir",
+   "kicker": "SINAIS",
+   "head": "Quando desconfiar",
    "bullets": [
-    "Telhas quebradas, trincadas ou fora do lugar",
-    "Calhas cheias de folha e sujeira",
-    "Água escorrendo pela parede, não pelo cano"
+    "Conta mais alta sem mudar o consumo",
+    "Barulho de água com tudo fechado",
+    "Mancha, bolha na parede ou piso úmido"
    ]
   },
   {
    "kind": "content",
-   "kicker": "NOS ENCONTROS",
-   "head": "Onde a goteira nasce",
+   "kicker": "TESTE 1 · HIDRÔMETRO",
+   "head": "Confira se ele gira parado",
    "bullets": [
-    "Rufo solto ou sem vedação na parede",
-    "Cumeeira ou cantos com massa rachada",
-    "Ralos e saídas de laje entupidos"
+    "Feche todas as torneiras e não dê descarga",
+    "Anote os números do hidrômetro",
+    "Espere 1 hora sem usar água",
+    "Mudou? Tem vazamento em algum lugar"
    ]
   },
   {
    "kind": "content",
-   "kicker": "POR DENTRO",
-   "head": "Sinais no teto",
+   "kicker": "TESTE 2 · VASO",
+   "head": "Vazamento silencioso no vaso",
    "bullets": [
-    "Mancha amarelada ou bolha na pintura",
-    "Cheiro de mofo perto do forro",
-    "Pingo só quando chove forte já é aviso"
+    "Pingue corante ou pó de café na caixa",
+    "Não dê descarga por 15 minutos",
+    "Cor na bacia: a vedação está vazando"
    ]
   },
   {
    "kind": "content",
-   "kicker": "ATENÇÃO",
-   "head": "Não suba sozinho",
+   "kicker": "O QUE NÃO FAZER",
+   "head": "Evite o improviso",
    "bullets": [
-    "Telhado molhado escorrega",
-    "Telha velha quebra sob o peso",
-    "Remendo com fita ou massa só esconde"
+    "Quebrar parede no chute",
+    "Pintar por cima da mancha",
+    "Esperar a próxima conta para agir"
    ]
   },
   {
    "kind": "cta",
-   "head": "Achou algum sinal?",
-   "sub": "A Curto e Silva faz o checkup sem custo."
+   "head": "Suspeita de vazamento?",
+   "sub": "A Curto e Silva acha a causa e resolve."
   }
  ]
 }
