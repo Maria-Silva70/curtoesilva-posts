@@ -168,5 +168,58 @@
    "head": "Pode perguntar para nós também.",
    "sub": "Orçamento sem custo."
   }
+ ],
+ "nov-checkup-telhado": [
+  {
+   "kind": "cover",
+   "tag": "TELHADO · PRÉ-CHUVA",
+   "head": "Checkup do telhado antes da chuva forte.",
+   "sub": "9 itens que você mesmo confere em 10 minutos."
+  },
+  {
+   "kind": "content",
+   "kicker": "POR FORA",
+   "head": "Olhe de baixo, sem subir",
+   "bullets": [
+    "Telhas quebradas, trincadas ou fora do lugar",
+    "Calhas cheias de folha e sujeira",
+    "Água escorrendo pela parede, não pelo cano"
+   ]
+  },
+  {
+   "kind": "content",
+   "kicker": "NOS ENCONTROS",
+   "head": "Onde a goteira nasce",
+   "bullets": [
+    "Rufo solto ou sem vedação na parede",
+    "Cumeeira ou cantos com massa rachada",
+    "Ralos e saídas de laje entupidos"
+   ]
+  },
+  {
+   "kind": "content",
+   "kicker": "POR DENTRO",
+   "head": "Sinais no teto",
+   "bullets": [
+    "Mancha amarelada ou bolha na pintura",
+    "Cheiro de mofo perto do forro",
+    "Pingo só quando chove forte já é aviso"
+   ]
+  },
+  {
+   "kind": "content",
+   "kicker": "ATENÇÃO",
+   "head": "Não suba sozinho",
+   "bullets": [
+    "Telhado molhado escorrega",
+    "Telha velha quebra sob o peso",
+    "Remendo com fita ou massa só esconde"
+   ]
+  },
+  {
+   "kind": "cta",
+   "head": "Achou algum sinal?",
+   "sub": "A Curto e Silva faz o checkup sem custo."
+  }
  ]
 }
