@@ -1,4 +1,5 @@
 set -e
+DIR=$1; OUT=$2; cd "$DIR"
 D=(2.6 3.6 3.6 3.6 3.8 4.8)
 F=0.4
 args=""; fc=""
@@ -16,4 +17,4 @@ for i in 1 2 3 4 5; do
   fc="$fc[$prev][v$i]xfade=transition=fade:duration=$F:offset=$off[x$i];"; prev=x$i
 done
 fc="${fc%;}"
-ffmpeg -v error -y $args -filter_complex "$fc" -map "[$prev]" -r 30 -c:v libx264 -preset veryfast -crf 18 -pix_fmt yuv420p -movflags +faststart /home/claude/tmp/serie-ep1-reel.mp4
+ffmpeg -v error -y $args -filter_complex "$fc" -map "[$prev]" -r 30 -c:v libx264 -preset veryfast -crf 18 -pix_fmt yuv420p -movflags +faststart "$OUT"
