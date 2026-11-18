@@ -290,129 +290,129 @@
     "head": "5 metas para a sua casa em *2027*",
     "pct": 100,
     "callouts": [
+     "AMPLIAÇÃO",
+     "ACABAMENTO",
      "TELHADO",
-     "ELÉTRICA",
-     "CALHAS",
-     "PINTURA",
-     "REPAROS"
+     "BANHEIRO",
+     "ELÉTRICA"
     ]
    },
    {
     "kind": "content",
-    "kicker": "META 01 / 05 · TELHADO",
-    "head": "Passar 2027 *sem goteira*",
+    "kicker": "META 01 / 05 · REFORMA",
+    "head": "Tirar do papel a *reforma dos sonhos*",
     "rows": [
      [
-      "Telhas trincadas",
-      "TROCAR",
+      "Banheiro novo",
+      "REFORMAR",
       "o"
      ],
      [
-      "Rufos e calhas",
+      "Cozinha planejada",
+      "REFORMAR",
+      "o"
+     ],
+     [
+      "Projeto e orçamento",
+      "ANTES",
+      "g"
+     ]
+    ],
+    "body": "Começar o ano com o orçamento na mão é o primeiro passo."
+   },
+   {
+    "kind": "content",
+    "kicker": "META 02 / 05 · CONSTRUÇÃO",
+    "head": "Construir ou *ampliar*",
+    "rows": [
+     [
+      "Cômodo novo ou segundo andar",
+      "CONSTRUIR",
+      "o"
+     ],
+     [
+      "Área gourmet e varanda",
+      "AMPLIAR",
+      "o"
+     ],
+     [
+      "Muro, laje e calçada",
+      "EXECUTAR",
+      "o"
+     ]
+    ],
+    "body": "Equipe própria do alicerce ao acabamento."
+   },
+   {
+    "kind": "content",
+    "kicker": "META 03 / 05 · PROTEÇÃO",
+    "head": "Casa *protegida* da chuva",
+    "rows": [
+     [
+      "Telhado e calhas",
       "REVISAR",
       "o"
      ],
      [
-      "Antes das chuvas",
-      "CHECKUP",
-      "g"
-     ]
-    ],
-    "body": "O melhor momento para cuidar do telhado é antes da água entrar."
-   },
-   {
-    "kind": "content",
-    "kicker": "META 02 / 05 · UMIDADE",
-    "head": "Acabar com o mofo *de vez*",
-    "rows": [
-     [
-      "Pintar por cima",
-      "NÃO RESOLVE",
-      "r"
-     ],
-     [
-      "Achar de onde vem a água",
-      "CAUSA",
+      "Laje e terraço",
+      "IMPERMEABILIZAR",
       "o"
      ],
      [
-      "Tratar e impermeabilizar",
-      "RESOLVIDO",
+      "Mofo e infiltração",
+      "TRATAR A CAUSA",
       "g"
      ]
     ]
    },
    {
     "kind": "content",
-    "kicker": "META 03 / 05 · ELÉTRICA",
-    "head": "Casa *segura* na elétrica",
+    "kicker": "META 04 / 05 · INSTALAÇÕES",
+    "head": "Elétrica e hidráulica *em dia*",
     "rows": [
      [
-      "Tomada que esquenta",
-      "RISCO",
+      "Fiação antiga",
+      "TROCAR",
       "r"
      ],
      [
-      "Disjuntor que desarma",
-      "SOBRECARGA",
-      "r"
+      "Vazamento escondido",
+      "ENCONTRAR",
+      "o"
      ],
      [
-      "Fiação revisada",
-      "SEGURO",
+      "Quadro e disjuntores",
+      "REVISAR",
       "g"
      ]
     ]
    },
    {
     "kind": "content",
-    "kicker": "META 04 / 05 · PEQUENOS REPAROS",
-    "head": "Zerar a lista do *\"depois eu vejo\"*",
+    "kicker": "META 05 / 05 · ACABAMENTO",
+    "head": "Casa com *cara nova*",
     "checks": [
      [
-      "Porta que não fecha",
-      "AJUSTE"
+      "Piso novo",
+      "ASSENTAR"
      ],
-     [
-      "Torneira pingando",
-      "VEDAÇÃO"
-     ],
-     [
-      "Piso solto",
-      "TROCA"
-     ],
-     [
-      "Parede trincada",
-      "TRATAR"
-     ]
-    ]
-   },
-   {
-    "kind": "content",
-    "kicker": "META 05 / 05 · PLANEJAMENTO",
-    "head": "Reformar na *época certa*",
-    "rows": [
      [
       "Pintura e fachada",
-      "ABR A JUN",
-      "c"
+      "RENOVAR"
      ],
      [
-      "Obra com quebra-quebra",
-      "TEMPO SECO",
-      "c"
+      "Drywall e forro",
+      "INSTALAR"
      ],
      [
-      "Orçamento antes",
-      "SEM SURPRESA",
-      "g"
+      "Pequenos reparos",
+      "ZERAR"
      ]
-    ],
-    "body": "Planejar cedo é pagar menos e não ser pego pela chuva no meio da obra."
+    ]
    },
    {
     "kind": "cta",
-    "head": "Conte com a gente *em 2027.*",
+    "head": "Construir ou reformar: *conte com a gente.*",
     "sub": "Visita e orçamento sem custo."
    }
   ]
