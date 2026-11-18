@@ -1,0 +1,37 @@
+{
+ "dez-casa-festas": [
+  {"kind": "cover", "tag": "DEZEMBRO · CASA EM DIA", "head": "Sua casa está pronta para receber a família?", "sub": "5 coisas para olhar antes das festas."},
+  {"kind": "content", "kicker": "1 · TOMADAS", "head": "Pisca-pisca, forno e ar ligados juntos", "body": "Tomada que esquenta ou disjuntor que desarma é sinal de sobrecarga. Resolva antes da ceia."},
+  {"kind": "content", "kicker": "2 · CHUVEIRO", "head": "Casa cheia, chuveiro no limite", "body": "Cheiro de queimado ou resistência fraca? Melhor trocar agora do que no dia 24."},
+  {"kind": "content", "kicker": "3 · CALHAS E TELHADO", "head": "Dezembro ainda é mês de chuva", "body": "Calha entupida e telha solta viram goteira bem na sala da festa."},
+  {"kind": "content", "kicker": "4 · PEQUENOS REPAROS", "head": "O que você vem adiando", "bullets": ["Porta que não fecha direito", "Piso solto ou trincado", "Mancha de mofo na parede", "Torneira pingando"]},
+  {"kind": "cta", "head": "Casa em dia para as festas.", "sub": "Visita e orçamento sem custo."}
+ ],
+ "dez-viagem-fim-de-ano": [
+  {"kind": "cover", "tag": "VAI VIAJAR?", "head": "Antes de sair de férias, faça isso na sua casa.", "sub": "Você volta tranquilo, sem surpresa."},
+  {"kind": "content", "kicker": "ÁGUA", "head": "Feche o registro geral", "body": "Se um cano estourar enquanto você estiver fora, a água não alaga a casa."},
+  {"kind": "content", "kicker": "ENERGIA", "head": "Tire da tomada o que não precisa", "body": "TV, micro-ondas e carregadores. Menos risco com raio e oscilação de energia."},
+  {"kind": "content", "kicker": "CHUVA", "head": "Calhas limpas e ralos livres", "body": "Chuva forte com a casa vazia: ninguém vê a água entrando."},
+  {"kind": "content", "kicker": "ANTES DE SAIR", "head": "Confira em 5 minutos", "bullets": ["Janelas e basculantes fechados", "Geladeira com pouca coisa perecível", "Alguém de confiança com a chave", "Um vizinho com seu telefone"]},
+  {"kind": "cta", "head": "Quer viajar sem preocupação?", "sub": "A gente revisa a casa antes, sem custo."}
+ ],
+ "dez-calendario-2027": [
+  {"kind": "cover", "tag": "SALVE ESTE POST", "head": "Calendário de manutenção da casa para 2027.", "sub": "O que revisar em cada época do ano."},
+  {"kind": "content", "kicker": "JAN A MAR · CHUVAS", "head": "Telhado, calhas e ralos", "body": "É quando a goteira aparece. Olhe depois de cada chuva forte."},
+  {"kind": "content", "kicker": "ABR A JUN · SECA", "head": "Hora da pintura e da fachada", "body": "Tempo seco é o melhor momento para pintar e tratar trincas."},
+  {"kind": "content", "kicker": "JUL A SET · PREPARAR", "head": "Elétrica, hidráulica e impermeabilização", "body": "Faça o que precisa de obra antes das chuvas voltarem."},
+  {"kind": "content", "kicker": "OUT A DEZ · PRÉ-CHUVA", "head": "Checkup antes da água", "body": "Telhas, rufos e calhas revisados antes de novembro."},
+  {"kind": "cta", "head": "Salve e conte com a gente.", "sub": "Checkup e orçamento sem custo."}
+ ],
+ "dez-retrospectiva-2026": [
+  {"kind": "cover", "tag": "RETROSPECTIVA 2026", "head": "Obrigado, 2026.", "sub": "Um ano de casas cuidadas em BH, Contagem e Nova Lima."},
+  {"kind": "content", "kicker": "O QUE A GENTE FEZ", "head": "Do básico ao acabamento", "bullets": ["Telhados, calhas e rufos", "Infiltração e mofo", "Pintura e fachada", "Pisos, elétrica e hidráulica"]},
+  {"kind": "content", "kicker": "QUEM CONTRATOU CONTA", "head": "Todas as avaliações com 5 estrelas no Google", "body": "Obrigado a cada cliente que abriu a porta da sua casa para a nossa equipe."},
+  {"kind": "content", "kicker": "AQUI NO INSTAGRAM", "head": "Mais de mil vizinhos acompanhando", "body": "Dicas, obras reais e a série Curto e Silva Resolve."},
+  {"kind": "content", "kicker": "PARA 2027", "head": "O mesmo compromisso", "body": "Equipe própria, orçamento explicado item por item e serviço bem feito."},
+  {"kind": "cta", "head": "Feliz 2027!", "sub": "Conte com a Curto e Silva."}
+ ],
+ "dez-natal": [
+  {"kind": "cta", "head": "Feliz Natal!", "sub": "Que a sua casa esteja cheia de quem você ama."}
+ ]
+}
