@@ -1,0 +1,37 @@
+{
+ "dez-casa-festas": {"style": "B", "slides": [
+  {"kind": "cover", "tag": "CHECKUP DE FIM DE ANO · 5 PONTOS", "head": "Sua casa está pronta para a *família?*", "callouts": ["CHUVEIRO", "TOMADAS", "CALHA"]},
+  {"kind": "content", "kicker": "PONTO 01 / 04 · ELÉTRICA", "head": "Pisca-pisca, forno e ar *ligados juntos*", "rows": [["Tomada que esquenta", "RISCO", "r"], ["Disjuntor que desarma", "SOBRECARGA", "r"], ["Revisado antes da ceia", "SEGURO", "g"]], "body": "Resolva agora: dezembro passa rápido e a agenda enche."},
+  {"kind": "content", "kicker": "PONTO 02 / 04 · CHUVEIRO", "head": "Casa cheia, *chuveiro no limite*", "rows": [["Cheiro de queimado", "ALERTA", "r"], ["Água que não esquenta", "RESISTÊNCIA", "o"], ["Trocado antes do dia 24", "TRANQUILO", "g"]]},
+  {"kind": "content", "kicker": "PONTO 03 / 04 · TELHADO E CALHAS", "head": "Dezembro ainda é *mês de chuva*", "rows": [["Calha entupida", "TRANSBORDA", "r"], ["Telha solta ou trincada", "GOTEIRA", "r"], ["Revisado antes da festa", "VEDADO", "g"]]},
+  {"kind": "content", "kicker": "PONTO 04 / 04 · PEQUENOS REPAROS", "head": "O que você vem *adiando*", "checks": [["Porta que não fecha", "AJUSTE"], ["Piso solto ou trincado", "TROCA"], ["Mofo na parede", "UMIDADE"], ["Torneira pingando", "VEDAÇÃO"]]},
+  {"kind": "cta", "head": "Casa em dia para as *festas.*", "sub": "Visita e orçamento sem custo."}
+ ]},
+ "dez-viagem-fim-de-ano": {"style": "A", "slides": [
+  {"kind": "cover", "big": "4", "tag": "VAI VIAJAR NO FIM DE ANO?", "head": "Antes de sair, faça isso na sua *casa.*", "sub": "4 cuidados para voltar tranquilo."},
+  {"kind": "content", "kicker": "ÁGUA", "head": "Feche o *registro geral*", "body": "Se um cano estourar enquanto você estiver fora, a água não alaga a casa."},
+  {"kind": "content", "kicker": "ENERGIA", "head": "Tire da tomada o que *não precisa*", "body": "TV, micro-ondas e carregadores. Menos risco com raio e oscilação de energia."},
+  {"kind": "content", "kicker": "CHUVA", "head": "Calhas limpas e *ralos livres*", "body": "Chuva forte com a casa vazia: ninguém vê a água entrando."},
+  {"kind": "content", "num": "04", "kicker": "ANTES DE TRANCAR A PORTA", "head": "Confira em *5 minutos*", "bullets": ["Janelas e basculantes fechados", "Geladeira sem perecíveis", "Alguém de confiança com a chave", "Um vizinho com seu telefone"]},
+  {"kind": "cta", "head": "Quer viajar sem *preocupação?*", "sub": "A gente revisa a casa antes, sem custo."}
+ ]},
+ "dez-calendario-2027": {"style": "B", "slides": [
+  {"kind": "cover", "tag": "SALVE ESTE POST · PLANO DE MANUTENÇÃO", "head": "O calendário da sua casa para *2027*", "pct": 100, "callouts": ["PINTURA", "ELÉTRICA", "CALHAS", "HIDRÁULICA", "TELHADO"]},
+  {"kind": "content", "kicker": "JAN A MAR · CHUVAS", "head": "Telhado, calhas e *ralos*", "rows": [["Goteira depois da chuva", "OLHAR", "o"], ["Calha transbordando", "LIMPAR", "o"], ["Ralo lento", "DESENTUPIR", "o"]], "body": "É a época em que a água mais entra. Olhe depois de cada chuva forte."},
+  {"kind": "content", "kicker": "ABR A JUN · SECA", "head": "Hora da pintura e da *fachada*", "rows": [["Pintura externa", "IDEAL", "g"], ["Trincas na parede", "TRATAR", "o"], ["Fachada desbotada", "RENOVAR", "o"]], "body": "Tempo seco é o melhor momento para pintar e tratar trincas."},
+  {"kind": "content", "kicker": "JUL A SET · PREPARAR", "head": "Obra antes das *chuvas*", "rows": [["Elétrica antiga", "REVISAR", "o"], ["Vazamento escondido", "INVESTIGAR", "o"], ["Laje e terraço", "IMPERMEABILIZAR", "o"]]},
+  {"kind": "content", "kicker": "OUT A DEZ · PRÉ-CHUVA", "head": "Checkup antes da *água*", "checks": [["Telhas trincadas", "TROCAR"], ["Rufos soltos", "FIXAR"], ["Calhas e condutores", "LIMPAR"], ["Pontos de infiltração", "VEDAR"]]},
+  {"kind": "cta", "head": "Salve e conte *com a gente.*", "sub": "Checkup e orçamento sem custo."}
+ ]},
+ "dez-natal": {"style": "A", "slides": [
+  {"kind": "cta", "big": "25", "head": "Feliz *Natal!*", "sub": "Que a sua casa esteja cheia de quem você ama."}
+ ]},
+ "dez-retrospectiva-2026": {"style": "A", "slides": [
+  {"kind": "cover", "big": "2026", "tag": "RETROSPECTIVA", "head": "Obrigado por *este ano.*", "size": 140, "sub": "Um ano de casas cuidadas em BH, Contagem e Nova Lima."},
+  {"kind": "content", "num": "01", "kicker": "O QUE A GENTE FEZ", "head": "Do básico ao *acabamento*", "bullets": ["Telhados, calhas e rufos", "Infiltração e mofo", "Pintura e fachada", "Pisos, elétrica e hidráulica"]},
+  {"kind": "content", "num": "5,0", "kicker": "QUEM CONTRATOU CONTA", "head": "Todas as avaliações com *5 estrelas* no Google", "size": 92, "body": "Obrigado a cada cliente que abriu a porta da sua casa para a nossa equipe."},
+  {"kind": "content", "num": "+1k", "kicker": "AQUI NO INSTAGRAM", "head": "Mais de mil vizinhos *acompanhando*", "body": "Dicas, obras reais e a série Curto e Silva Resolve."},
+  {"kind": "content", "num": "27", "kicker": "PARA 2027", "head": "O mesmo *compromisso*", "body": "Equipe própria, orçamento explicado item por item e serviço bem feito."},
+  {"kind": "cta", "head": "Feliz *2027!*", "sub": "Conte com a Curto e Silva."}
+ ]}
+}
