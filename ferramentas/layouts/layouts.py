@@ -34,7 +34,27 @@ def ctablock(c,y):
 <div class=a style="left:0;right:0;top:1110px;text-align:center;font:500 30px IN;color:#B2B4BC">A nova geração que honra o velho compromisso.</div>"""
 def bullets_A(items,y):
     return f'<div class=a style="left:70px;top:{y}px;right:70px">'+''.join(f'<div style="display:flex;align-items:center;gap:30px;padding:24px 0;border-bottom:2px solid #ffffff1a"><span style="font:800 92px/0.8 BC;color:transparent;-webkit-text-stroke:3px #FF6A1F;min-width:110px">{i+1:02d}</span><span style="font:700 42px/1.2 IN">{hi(t)}</span></div>' for i,t in enumerate(items))+'</div>'
+
+def chip(t,col='#FF6A1F',fg='#07080A'): return f'<span style="display:inline-block;background:{col};color:{fg};padding:8px 20px;font:800 34px BC;letter-spacing:.12em">{t}</span>'
+def photoA(c,n,t):
+    img=R+c['img']; pos=c.get('pos','center')
+    last=n==t
+    h=CSS.replace('BG','#07080A')+f"""<div class=a style="inset:0;background:url({img}) {pos}/cover"></div>
+<div class=a style="inset:0;background:linear-gradient(180deg,#07080Ad9 0%,#07080A40 14%,transparent 24%,transparent 56%,#07080Acc 74%,#07080A 90%)"></div>{top(n,t)}"""
+    if c.get('chip'): h+=f'<div class=a style="left:70px;top:190px">{chip(c["chip"], "#FF6A1F" if c["chip"]!="ANTES" else "#F4F4F6")}</div>'
+    if c.get('big'): h+=f'<div class=a style="right:50px;top:150px;font:800 260px/0.8 BC;color:transparent;-webkit-text-stroke:4px #FF6A1F">{c["big"]}</div>'
+    h+=f"""<div class=a style="left:70px;right:70px;bottom:{c.get('bottom',130)}px"><div class=kick>{c.get('kicker','')}</div><div class=h style="font-size:{c.get('size',96)}px;margin-top:14px">{hi(c['head'])}</div>{'<div style="font:500 36px/1.38 IN;color:#D6D8DE;margin-top:22px">'+hi(c['body'])+'</div>' if c.get('body') else ''}</div>{foot(last)}</body></html>"""
+    return h
+def splitA(c,n,t):
+    a,b=R+c['imgs'][0],R+c['imgs'][1]
+    return CSS.replace('BG','#07080A')+f'<div class=a style="inset:0;{GRID}"></div>'+top(n,t)+f"""
+<div class=a style="left:70px;top:190px"><div class=kick>{c.get('kicker','')}</div><div class=h style="font-size:84px;margin-top:10px">{hi(c['head'])}</div></div>
+<div class=a style="left:70px;right:70px;top:420px;height:390px;background:url({a}) center/cover;border-radius:20px"></div><div class=a style="left:90px;top:440px">{chip('ANTES','#F4F4F6')}</div>
+<div class=a style="left:70px;right:70px;top:830px;height:390px;background:url({b}) center/cover;border-radius:20px;outline:4px solid #FF6A1F"></div><div class=a style="left:90px;top:850px">{chip('DEPOIS')}</div>
+{foot(n==t)}</body></html>"""
 def A(c,n,t):
+    if c['kind']=='photo': return photoA(c,n,t)
+    if c['kind']=='split': return splitA(c,n,t)
     bg=CSS.replace('BG','#07080A')+f'<div class=a style="inset:0;{GRID}"></div>'
     last=n==t
     if c['kind']=='cover':

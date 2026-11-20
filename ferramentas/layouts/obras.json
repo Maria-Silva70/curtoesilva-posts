@@ -1,0 +1,58 @@
+{
+ "dez-11-dona-clara": {
+  "style": "A",
+  "slides": [
+   {
+    "kind": "photo",
+    "img": "fotos-obras/dona-clara/depois-1.jpg",
+    "pos": "center 40%",
+    "chip": "OBRA REAL · DONA CLARA, BH",
+    "kicker": "PINTURA COM EFEITO ESPECIAL",
+    "head": "De parede lisa a *parede de destaque*",
+    "size": 108,
+    "body": "Arraste e veja o antes e o depois →"
+   },
+   {
+    "kind": "photo",
+    "img": "fotos-obras/dona-clara/antes-1.jpg",
+    "pos": "center 45%",
+    "chip": "ANTES",
+    "kicker": "COMO ESTAVA",
+    "head": "Parede comum, *sem graça*",
+    "body": "Branca e lisa, com furos e marcas do dia a dia."
+   },
+   {
+    "kind": "photo",
+    "img": "fotos-obras/dona-clara/antes-2.jpg",
+    "pos": "center",
+    "chip": "PREPARO",
+    "kicker": "O QUE NINGUÉM VÊ",
+    "head": "Base bem feita *primeiro*",
+    "body": "Corrigimos furos e imperfeições com massa antes da textura. É isso que faz o acabamento durar."
+   },
+   {
+    "kind": "photo",
+    "img": "fotos-obras/dona-clara/depois-3.jpg",
+    "pos": "center 45%",
+    "chip": "DEPOIS",
+    "kicker": "TINTA DE EFEITO ESPECIAL",
+    "head": "Textura com *movimento*",
+    "body": "A aplicação cria um desenho único, com tons e movimento que mudam com a luz."
+   },
+   {
+    "kind": "split",
+    "imgs": [
+     "fotos-obras/dona-clara/antes-2.jpg",
+     "fotos-obras/dona-clara/depois-4.jpg"
+    ],
+    "kicker": "MESMA PAREDE",
+    "head": "Antes e *depois*"
+   },
+   {
+    "kind": "cta",
+    "head": "Quer uma parede assim *na sua casa?*",
+    "sub": "Visita e orçamento sem custo."
+   }
+  ]
+ }
+}
